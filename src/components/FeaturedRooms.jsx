@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { RoomContext } from "../context/room.context";
 import Loading from "./Loading";
 import Room from "./Room";
