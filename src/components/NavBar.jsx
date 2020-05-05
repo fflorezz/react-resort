@@ -24,8 +24,8 @@ const NavBar = () => {
           </button>
         </div>
         <ul className={isOpen ? "nav-links show-nav" : "nav-links"}>
-          {ROUTES.map((route) => (
-            <li>
+          {ROUTES.map((route, idx) => (
+            <li key={idx}>
               <Link to={route.path}>{route.name}</Link>
             </li>
           ))}
