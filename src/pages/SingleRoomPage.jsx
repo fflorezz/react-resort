@@ -1,9 +1,32 @@
-import React, { Component } from "react";
+import React, { useContext } from "react";
 
-class SingleRoomPage extends Component {
-  render() {
-    return <div>SINGLE ROOM PAGE</div>;
-  }
+import { RoomContext } from "./../context/room.context";
+
+import Loading from "./../components/Loading";
+import ErrorMessage from "../components/ErrorMessage";
+import SingleRoom from "../components/SingleRoom";
+
+function SingleRoomPage({ match }) {
+  const { getRoom, loading } = useContext(RoomContext);
+
+  const slug = match.params.slug;
+  let room = getRoom(slug);
+
+  return (
+    <div>
+      {loading ? (
+        <Loading />
+      ) : room ? (
+        <SingleRoom room={room} />
+      ) : (
+        <ErrorMessage
+          text="Room not found"
+          path="/rooms"
+          btnText="Back to Rooms"
+        />
+      )}
+    </div>
+  );
 }
 
 export default SingleRoomPage;

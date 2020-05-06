@@ -1,6 +1,7 @@
 import React, { createContext, useEffect, useState } from "react";
 
 import items from "../data";
+import formatData from "./utils";
 
 export const RoomContext = createContext();
 
@@ -9,12 +10,13 @@ export const RoomProvider = ({ children }) => {
     rooms: [],
     sortedRooms: [],
     featuredRooms: [],
-    loading: false,
+    loading: true,
   });
 
   useEffect(() => {
     const rooms = formatData(items);
     const featuredRooms = rooms.filter((room) => room.featured);
+
     setState({
       ...state,
       rooms,
@@ -24,15 +26,13 @@ export const RoomProvider = ({ children }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  function formatData(items) {
-    const tempItems = items.map((item) => {
-      const id = item.sys.id;
-      const images = item.fields.images.map((image) => image.fields.file.url);
-      const room = { ...item.fields, images, id };
-      return room;
-    });
-    return tempItems;
+  function getRoom(slug) {
+    return state.rooms.find((room) => room.slug === slug);
   }
 
-  return <RoomContext.Provider value={state}>{children}</RoomContext.Provider>;
+  return (
+    <RoomContext.Provider value={{ ...state, getRoom }}>
+      {children}
+    </RoomContext.Provider>
+  );
 };

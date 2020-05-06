@@ -1,7 +1,14 @@
 import React from "react";
 
-const Hero = ({ children, hero }) => {
-  return <header className={hero}>{children}</header>;
+const Hero = ({ children, hero, imgUrl }) => {
+  return (
+    <header
+      className={hero}
+      style={imgUrl ? { backgroundImage: `url(${imgUrl})` } : {}}
+    >
+      {children}
+    </header>
+  );
 };
 
 Hero.defaultProps = {
