@@ -1,4 +1,4 @@
-export default function formatData(items) {
+export function formatData(items) {
   const tempItems = items.map((item) => {
     const id = item.sys.id;
     const images = item.fields.images.map((image) => image.fields.file.url);
@@ -6,4 +6,8 @@ export default function formatData(items) {
     return room;
   });
   return tempItems;
+}
+
+export function getValuesForOptions(items, value, additional = []) {
+  return [...additional, ...new Set(items.map((item) => item[value]))];
 }
