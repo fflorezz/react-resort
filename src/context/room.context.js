@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useState } from "react";
 
-import items from "../data";
+import Client from "../contentful";
 import { formatData, getValuesForOptions } from "./utils";
 
 export const RoomContext = createContext();
@@ -18,25 +18,38 @@ export const RoomProvider = ({ children }) => {
   });
 
   useEffect(() => {
-    const rooms = formatData(items);
-    const featuredRooms = rooms.filter((room) => room.featured);
-    const maxPrice = Math.max(...rooms.map((item) => item.price));
-    const maxSize = Math.max(...rooms.map((item) => item.size));
-    const options = {
-      type: getValuesForOptions(rooms, "type", ["all"]),
-      capacity: getValuesForOptions(rooms, "capacity"),
+    const fetchData = async () => {
+      try {
+        const response = await Client.getEntries({
+          content_type: "resortRoom",
+          order: "sys.createdAt",
+        });
+        const items = response.items;
+        const rooms = formatData(items);
+        const featuredRooms = rooms.filter((room) => room.featured);
+        const maxPrice = Math.max(...rooms.map((item) => item.price));
+        const maxSize = Math.max(...rooms.map((item) => item.size));
+        const options = {
+          type: getValuesForOptions(rooms, "type", ["all"]),
+          capacity: getValuesForOptions(rooms, "capacity"),
+        };
+
+        setState({
+          ...state,
+          rooms,
+          featuredRooms,
+          sortedRooms: rooms,
+          loading: false,
+          maxPrice,
+          maxSize,
+          options,
+        });
+      } catch (err) {
+        console.log(err);
+      }
     };
 
-    setState({
-      ...state,
-      rooms,
-      featuredRooms,
-      sortedRooms: rooms,
-      loading: false,
-      maxPrice,
-      maxSize,
-      options,
-    });
+    fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
