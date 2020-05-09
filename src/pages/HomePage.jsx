@@ -5,10 +5,12 @@ import Hero from "./../components/Hero";
 import Banner from "./../components/Banner";
 import Services from "./../components/Services";
 import FeaturedRooms from "../components/FeaturedRooms";
+import ScrollToTop from "./../components/ScrollToTop";
 
 const HomePage = () => {
   return (
     <>
+      <ScrollToTop />
       <Hero>
         <Banner
           title="Luxurious Rooms"

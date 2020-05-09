@@ -1,37 +1,43 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { RoomContext } from "./../context/room.context";
 import Title from "./Title";
-import { getValuesForOptions } from "../context/utils";
 
-const getValuesOptions = (items, value, additional = null) => {
-  console.log("getting values", value);
-  const values = [additional, ...new Set(items.map((item) => item[value]))];
-  const elements = values.map((item, idx) => (
-    <option key={idx} value={item}>
-      {item}
-    </option>
-  ));
-
-  return elements;
-};
-
-const RoomsFilter = ({ rooms }) => {
+const RoomsFilter = () => {
   const {
-    handleChange,
-    type,
-    capacity,
-    price,
     minPrice,
     maxPrice,
     minSize,
     maxSize,
-    breakfast,
-    pets,
     options,
+    filterRooms,
   } = useContext(RoomContext);
 
-  const typeOptions = getValuesOptions(rooms, "type", "all");
-  const capacityOptions = getValuesOptions(rooms, "capacity");
+  const [state, setState] = useState({
+    type: "all",
+    capacity: "1",
+    price: maxPrice,
+    minSize: minSize,
+    maxSize: maxSize,
+    breakfast: false,
+    pets: false,
+    minPrice: minPrice,
+    maxPrice: maxPrice,
+  });
+
+  useEffect(() => {
+    filterRooms(state);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [state]);
+
+  function handleChange({ target: { type, name, value, checked } }) {
+    if (type === "checkbox") {
+      value = checked;
+    }
+    setState({
+      ...state,
+      [name]: value,
+    });
+  }
 
   return (
     <section className="filter-container">
@@ -43,7 +49,7 @@ const RoomsFilter = ({ rooms }) => {
           <select
             name="type"
             id="type"
-            value={type}
+            value={state.type}
             className="form-control"
             onChange={handleChange}
           >
@@ -61,7 +67,7 @@ const RoomsFilter = ({ rooms }) => {
           <select
             name="capacity"
             id="capacity"
-            value={capacity}
+            value={state.capacity}
             className="form-control"
             onChange={handleChange}
           >
@@ -75,14 +81,14 @@ const RoomsFilter = ({ rooms }) => {
         {/*  end Guests */}
         {/*  room price */}
         <div className="form-group">
-          <label htmlFor="price">room price ${price}</label>
+          <label htmlFor="price">room price ${state.price}</label>
           <input
             type="range"
             name="price"
-            min={minPrice}
-            max={maxPrice}
-            id={price}
-            value={price}
+            min={state.minPrice}
+            max={state.maxPrice}
+            id="price"
+            value={state.price}
             onChange={handleChange}
             className="form-control"
           />
@@ -96,7 +102,7 @@ const RoomsFilter = ({ rooms }) => {
               type="number"
               name="minSize"
               id="size"
-              value={minSize}
+              value={state.minSize}
               onChange={handleChange}
               className="size-input"
             />
@@ -104,7 +110,7 @@ const RoomsFilter = ({ rooms }) => {
               type="number"
               name="maxSize"
               id="size"
-              value={maxSize}
+              value={state.maxSize}
               onChange={handleChange}
               className="size-input"
             />
@@ -118,7 +124,7 @@ const RoomsFilter = ({ rooms }) => {
               type="checkbox"
               name="breakfast"
               id="breakfast"
-              checked={breakfast}
+              checked={state.breakfast}
               onChange={handleChange}
             />
             <label htmlFor="breakfast">Breakfast</label>
@@ -128,7 +134,7 @@ const RoomsFilter = ({ rooms }) => {
               type="checkbox"
               name="pets"
               id="pets"
-              checked={pets}
+              checked={state.pets}
               onChange={handleChange}
             />
             <label htmlFor="pets">pets</label>

@@ -11,21 +11,11 @@ export const RoomProvider = ({ children }) => {
     sortedRooms: [],
     featuredRooms: [],
     loading: true,
-    type: "all",
-    capacity: 1,
-    price: 0,
     minPrice: 0,
     maxPrice: 0,
     minSize: 0,
     maxSize: 0,
-    breakfast: false,
-    pets: false,
-    filtered: false,
   });
-
-  useEffect(() => {
-    filterRooms();
-  }, [state.filtered]);
 
   useEffect(() => {
     const rooms = formatData(items);
@@ -43,7 +33,6 @@ export const RoomProvider = ({ children }) => {
       featuredRooms,
       sortedRooms: rooms,
       loading: false,
-      price: maxPrice,
       maxPrice,
       maxSize,
       options,
@@ -51,29 +40,9 @@ export const RoomProvider = ({ children }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleChange = ({ target: { type, name, value, checked } }) => {
-    if (type === "checkbox") {
-      value = checked;
-    }
-
-    setState({
-      ...state,
-      [name]: value,
-      filtered: !state.filtered,
-    });
-  };
-
-  function filterRooms() {
-    let {
-      rooms,
-      type,
-      capacity,
-      price,
-      minSize,
-      maxSize,
-      breakfast,
-      pets,
-    } = state;
+  function filterRooms(filters) {
+    let { type, capacity, price, minSize, maxSize, breakfast, pets } = filters;
+    const rooms = state.rooms;
     let tempRooms = [...rooms];
     capacity = parseInt(capacity);
     price = parseInt(price);
@@ -81,27 +50,23 @@ export const RoomProvider = ({ children }) => {
     maxSize = parseInt(maxSize);
 
     if (type !== "all") {
-      tempRooms = rooms.filter((room) => room.type === type);
+      tempRooms = tempRooms.filter((room) => room.type === type);
     }
-
     if (capacity !== 1) {
-      tempRooms = rooms.filter((room) => room.capacity >= capacity);
+      tempRooms = tempRooms.filter((room) => room.capacity >= capacity);
     }
-
     // filter by price
-    tempRooms = rooms.filter((room) => room.price <= price);
-
+    tempRooms = tempRooms.filter((room) => room.price <= price);
     // filter by size
-    tempRooms = rooms.filter(
+    tempRooms = tempRooms.filter(
       (room) => minSize <= room.size && room.size <= maxSize
     );
-
-    // filter by breakfast
-    tempRooms = rooms.filter((room) => room.breakfast === breakfast);
-
-    // filter by pets
-    tempRooms = rooms.filter((room) => room.pets === pets);
-
+    if (breakfast) {
+      tempRooms = tempRooms.filter((room) => room.breakfast === breakfast);
+    }
+    if (pets) {
+      tempRooms = tempRooms.filter((room) => room.pets === pets);
+    }
     setState({
       ...state,
       sortedRooms: tempRooms,
@@ -113,7 +78,7 @@ export const RoomProvider = ({ children }) => {
   }
 
   return (
-    <RoomContext.Provider value={{ ...state, getRoom, handleChange, setState }}>
+    <RoomContext.Provider value={{ ...state, getRoom, filterRooms }}>
       {children}
     </RoomContext.Provider>
   );
