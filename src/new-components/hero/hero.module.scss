@@ -1,0 +1,28 @@
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  img {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    filter: brightness(70%);
+  }
+
+  .heroText {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    h1 {
+      margin-top: 0s;
+    }
+    .logo {
+      width: 150px;
+      height: 150px;
+      filter: brightness(100);
+    }
+  }
+}
