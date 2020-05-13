@@ -13,7 +13,7 @@ const HomePage = () => {
       <ScrollToTop />
       <Hero />
       <Services />
-      <FeaturedRooms />
+      {/* {  <FeaturedRooms />} */}
     </>
   );
 };
