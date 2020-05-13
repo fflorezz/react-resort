@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 
-import Header from "./pages/home-page/Header.jsx/Header";
+import Header from "./new-components/header/Header";
 import HomePage from "./pages/home-page/HomePage";
 import RoomsPage from "./pages/RoomsPage";
 import SingleRoomPage from "./pages/SingleRoomPage";
