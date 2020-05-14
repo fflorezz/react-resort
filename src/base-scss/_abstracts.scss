@@ -25,6 +25,16 @@ $color-white: #f5f5f5;
   }
 }
 
+@mixin linkState {
+  &:link,
+  &:hover,
+  &:active,
+  &:focus,
+  &:visited {
+    @content;
+  }
+}
+
 /* TRANSITIONS
    ========================================================================== */
 $transform-primary: transform 0.3s ease-out;
