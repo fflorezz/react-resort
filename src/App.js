@@ -6,7 +6,6 @@ import HomePage from "./pages/home-page/HomePage";
 import RoomsPage from "./pages/RoomsPage";
 import SingleRoomPage from "./pages/SingleRoomPage";
 import ErrorPage from "./pages/ErrorPage";
-import NavBar from "./components/NavBar";
 
 import "./App.scss";
 

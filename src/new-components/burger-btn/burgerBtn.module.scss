@@ -28,7 +28,7 @@
     height: 100%;
     background-color: $color-primary;
     transform: scaleY(1);
-    transform-origin: bottom;
+    transform-origin: top;
     transition: $transform-primary;
     transition-delay: 300ms;
   }
@@ -45,6 +45,7 @@
   }
   .burgerIconClose {
     position: absolute;
+    top: 50%;
     left: 50%;
     z-index: 3;
     fill: rgb(224, 224, 224);
@@ -53,7 +54,7 @@
     overflow: hidden;
     opacity: 0;
     transition: $all-primary;
-    transform: translateX(-50%);
+    transform: translate(-50%, -50%);
     transition-delay: 0;
   }
   &:hover {
@@ -73,7 +74,7 @@
   transition-delay: 0;
   .btnBackground {
     transform: scaleY(0);
-    transform-origin: top;
+    transform-origin: bottom;
     transition: $transform-primary;
     transition-delay: 300ms;
   }

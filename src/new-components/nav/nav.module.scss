@@ -1,7 +1,7 @@
 @import "../../base-scss/abstracts";
 
 .nav {
-  width: 100vw;
+  width: 100%;
   position: fixed;
   top: 0;
   left: 0;
@@ -10,20 +10,11 @@
   z-index: 6;
   color: $color-white;
   overflow: hidden;
-  background: $color-bg-dark;
   text-align: center;
-  //visibility: hidden;
+  background: $color-bg-dark;
+  visibility: hidden;
   @include atSmall {
-    width: 100vw;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
     text-align: left;
-    z-index: 6;
-    color: #fff;
-    overflow: hidden;
-    background: #3a3636;
   }
 }
 
@@ -34,7 +25,6 @@
   top: 0;
   left: 0;
   overflow: hidden;
-  transform: matrix(1, 0, 0, 1, 0, 0);
   @include atSmall {
     height: 100%;
     width: 100%;
@@ -50,7 +40,7 @@
 
 .navLogo {
   width: 10.417vw;
-  height: 8.333vw;
+  height: 10.417vw;
   position: absolute;
   left: 50%;
   top: 3.472vw;
@@ -61,7 +51,7 @@
   @include atSmall {
     top: 21.333vw;
     width: 33.333vw;
-    height: 26.667vw;
+    height: 33.333vw;
   }
 }
 

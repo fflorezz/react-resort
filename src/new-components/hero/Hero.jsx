@@ -7,9 +7,9 @@ import logo from "../../images/logo_transparent_white.png";
 const Hero = () => {
   return (
     <div className={styles.hero}>
-      <img src={heroImage} alt="resort-hotel" />
+      <img className={styles.heroImage} src={heroImage} alt="resort-hotel" />
+      <img className={styles.logo} src={logo} alt="" />
       <div className={styles.heroText}>
-        <img className={styles.logo} src={logo} alt="" />
         <h1>El espíritu cosmopolita</h1>
         <p>
           El concepto y el servicio de los mejores hoteles de lujo en nuestras

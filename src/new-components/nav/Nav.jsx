@@ -1,16 +1,45 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import { Link, useHistory } from "react-router-dom";
+import { gsap } from "gsap";
+import { motion, AnimatePresence } from "framer-motion";
+
+import { GlobalContext } from "../../context/global.context";
 
 import logo from "../../images/logo_transparent_white.png";
 import heroImg from "../../images/hero-web.jpg";
 
 import styles from "./nav.module.scss";
+import { navAnimation } from "./nav.motion";
 
 const Nav = () => {
+  const { isMenuOpen, toggleMenu } = useContext(GlobalContext);
+  const history = useHistory();
+
+  history.listen((location, action) => {
+    if (isMenuOpen) {
+      toggleMenu();
+    }
+  });
+
+  useEffect(() => {
+    navAnimation();
+  }, []);
+
   return (
-    <nav className={styles.nav}>
-      <div className={styles.navMask}>
-        <img className={styles.navLogo} src={logo} alt="aurora" />
+    <motion.nav
+      key="modal"
+      exit={{ y: "100%", opacity: 1 }}
+      transition={{ duration: 0.6, ease: "easeInOut" }}
+      className={styles.nav}
+    >
+      <motion.div
+        exit={{ y: "-100%", opacity: 1 }}
+        transition={{ duration: 0.6, ease: "easeInOut" }}
+        className={styles.navMask}
+      >
+        <Link to="/">
+          <img className={styles.navLogo} src={logo} alt="aurora" />
+        </Link>
         <div className={styles.navContainer}>
           <ul className={styles.subItems}>
             <li className={styles.subItem}>
@@ -23,17 +52,17 @@ const Nav = () => {
           <ul className={styles.navItems}>
             <li className={styles.navItem}>
               <Link to="/rooms">
-                <span>ROOMS</span>
+                <span>Servicios</span>
               </Link>
             </li>
             <li className={styles.navItem}>
               <Link to="/rooms">
-                <span>ROOMS</span>
+                <span>Servicios</span>
               </Link>
             </li>
             <li className={styles.navItem}>
               <Link to="/rooms">
-                <span>ROOMS</span>
+                <span>Servicios</span>
               </Link>
             </li>
           </ul>
@@ -58,8 +87,8 @@ const Nav = () => {
         <div className={styles.navImage}>
           <img src={heroImg} alt="" />
         </div>
-      </div>
-    </nav>
+      </motion.div>
+    </motion.nav>
   );
 };
 
