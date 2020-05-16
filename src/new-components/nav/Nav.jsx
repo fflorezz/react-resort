@@ -1,7 +1,6 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { gsap } from "gsap";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 import { GlobalContext } from "../../context/global.context";
 
@@ -38,7 +37,14 @@ const Nav = () => {
         className={styles.navMask}
       >
         <Link to="/">
-          <img className={styles.navLogo} src={logo} alt="aurora" />
+          <img
+            onClick={() => {
+              window.scrollTo(0, 0);
+            }}
+            className={styles.navLogo}
+            src={logo}
+            alt="aurora"
+          />
         </Link>
         <div className={styles.navContainer}>
           <ul className={styles.subItems}>

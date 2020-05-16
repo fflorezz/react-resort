@@ -14,7 +14,11 @@ export const maskAnimation = () => {
     .to(`.${styles.mask}`, { y: "-100%", duration: 1, ease: "power3" })
     .to(
       `.${styles.maskFixed}`,
-      { y: "100%", duration: 1, ease: "power3" },
+      {
+        y: "100%",
+        duration: 1,
+        ease: "power3",
+      },
       "-=1"
     );
 };

@@ -5,8 +5,10 @@
   z-index: 10;
   top: 3.472vw;
   right: 3.472vw;
-  height: 5.833vw;
+  height: 4vw;
   overflow: hidden;
+  display: flex;
+  align-items: center;
   @include atSmall {
     top: 8vw;
     right: 8vw;
@@ -14,78 +16,110 @@
     width: 13.333vw;
     height: 13.333vw;
   }
-}
-.menuBar {
-  height: 5.833vw;
-  margin-right: 5vw;
-  display: flex;
-  position: relative;
-  top: 0;
-  z-index: 2;
-  color: $color-white;
-  @include atSmall {
-    display: none;
+
+  .menuBar {
+    height: 4vw;
+    margin-right: 3.99vw;
+    display: flex;
+    position: relative;
+    top: 0;
+    z-index: 2;
+    color: white;
+    @include atSmall {
+      display: none;
+    }
   }
-}
-.menuButtons {
-  height: auto;
-  margin-left: 1.042vw;
-  overflow: hidden;
-}
-.menuList {
-  display: flex;
-}
-.menuButton {
-  margin: 0 1.042vw;
-  display: block;
-  cursor: pointer;
-  position: relative;
-  line-height: 5.833vw;
-  font-size: 1.2vw;
-  &:before {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 2.2vw;
+
+  .menuBarBg {
     width: 100%;
-    height: 1px;
-    background: $color-primary;
-    transform: scaleX(0);
-    transform-origin: right;
-    transition: $transform-primary;
+    height: 4vw;
+    background-color: white;
+    opacity: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: black;
+    z-index: -1;
+    //transform: scaleY(0);
   }
-  &:hover {
+
+  .menuButtons {
+    height: auto;
+    margin-left: 1.042vw;
+    overflow: hidden;
+  }
+  .menuList {
+    display: flex;
+  }
+  .menuButton {
+    height: 4vw;
+    margin: 0 1.042vw;
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+    line-height: 5.833vw;
+    font-size: 1.2vw;
+    display: flex;
+    align-items: center;
     &:before {
-      transform: scaleX(1);
-      transform-origin: left;
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 1.2vw;
+      width: 100%;
+      height: 1px;
+      background: $color-primary;
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: $transform-primary;
+    }
+    &:hover {
+      &:before {
+        transform: scaleX(1);
+        transform-origin: left;
+      }
     }
   }
-}
-.menuSocial {
-  margin: 0 1.042vw;
-}
-.socialButton {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  &:hover {
-    svg {
-      fill: $color-primary;
+  .menuSocial {
+    margin: 0 1.042vw;
+  }
+  .socialButton {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    &:hover {
+      svg {
+        fill: $color-primary;
+      }
     }
   }
-}
-.buttonInstagram {
-  width: 1.8vw;
-  height: 1.8vw;
-  fill: $color-white;
-}
-.menuDivider {
-  width: 1px;
-  height: 2.083vw;
-  margin-left: 0.5vw;
-  position: relative;
-  top: 50%;
-  background-color: $color-white;
-  backface-visibility: hidden;
-  transform: translateY(-50%);
+  .buttonInstagram {
+    width: 1.8vw;
+    height: 1.8vw;
+    fill: $color-white;
+  }
+  .menuDivider {
+    width: 1px;
+    height: 2.083vw;
+    margin-left: 0.5vw;
+    position: relative;
+    top: 50%;
+    background-color: $color-white;
+    backface-visibility: hidden;
+    transform: translateY(-50%);
+  }
+  // &.white {
+  //   // .menuBar {
+  //   //   color: black;
+  //   // }
+  //   // .menuBarBg {
+  //   //   opacity: 1;
+  //   // }
+  //   .menuDivider {
+  //     background-color: rgb(42, 42, 42);
+  //   }
+  //   .buttonInstagram {
+  //     fill: black;
+  //   }
+  // }
 }

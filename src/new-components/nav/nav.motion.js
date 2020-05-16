@@ -1,5 +1,4 @@
 import { gsap } from "gsap";
-import { motion, AnimatePresence } from "framer-motion";
 
 import styles from "./nav.module.scss";
 
