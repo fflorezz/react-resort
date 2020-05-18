@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { motion } from "framer-motion";
+import { HashLink } from "react-router-hash-link";
 
 import { GlobalContext } from "../../context/global.context";
 
@@ -57,14 +58,14 @@ const Nav = () => {
           </ul>
           <ul className={styles.navItems}>
             <li className={styles.navItem}>
-              <Link to="/rooms">
-                <span>Servicios</span>
-              </Link>
+              <HashLink to="/#bar">
+                <span>Bar&Champagne</span>
+              </HashLink>
             </li>
             <li className={styles.navItem}>
-              <Link to="/rooms">
+              <HashLink to="/#bar">
                 <span>Servicios</span>
-              </Link>
+              </HashLink>
             </li>
             <li className={styles.navItem}>
               <Link to="/rooms">

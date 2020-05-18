@@ -1,0 +1,39 @@
+@import "../../base-scss/abstracts";
+
+.heading {
+}
+
+.titleLine {
+  opacity: 1;
+  display: inline-block;
+}
+
+.titleLineContainer {
+  overflow: hidden;
+  height: 7vw;
+}
+
+.headingTitle {
+  font-size: 6vw;
+  font-weight: 400;
+  line-height: 6vw;
+  letter-spacing: -0.2vw;
+  color: $color-black;
+}
+.headingText {
+  position: relative;
+  font-weight: 300;
+  font-size: 1.2vw;
+  line-height: 1.875vw;
+  letter-spacing: 0.05vw;
+  width: 55%;
+  &::before {
+    left: 0;
+    top: -1vw;
+    height: 1px;
+    width: 30%;
+    content: "";
+    background: $color-primary;
+    position: absolute;
+  }
+}

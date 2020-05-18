@@ -14,7 +14,7 @@ function App() {
   console.log("app");
   return (
     <>
-      <Mask />
+      {/* <Mask /> */}
       <Header />
       <Switch>
         <Route exact path="/" component={HomePage} />
