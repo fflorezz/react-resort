@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useIntersection } from "react-use";
 
-export const useOnScreen = (threshold) => {
+export const useOnScreen = (threshold = 0.5) => {
   const [visible, setVisible] = useState(false);
   const ref = useRef(null);
   const intersection = useIntersection(ref, {
@@ -11,6 +11,7 @@ export const useOnScreen = (threshold) => {
   });
 
   useEffect(() => {
+    console.log(ref);
     if (intersection) {
       if (
         intersection.intersectionRatio < threshold &&

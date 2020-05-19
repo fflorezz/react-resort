@@ -1,16 +1,26 @@
 @import "../../base-scss/abstracts";
 
 .heading {
+  height: auto;
+  overflow: hidden;
+  margin-bottom: 5vw;
 }
 
 .titleLine {
   opacity: 1;
   display: inline-block;
+  @include atSmall {
+    font-size: 12.667vw;
+    line-height: 12.667vw;
+  }
 }
 
 .titleLineContainer {
   overflow: hidden;
   height: 7vw;
+  @include atSmall {
+    height: 14.667vw;
+  }
 }
 
 .headingTitle {
@@ -35,5 +45,10 @@
     content: "";
     background: $color-primary;
     position: absolute;
+  }
+  @include atSmall {
+    font-size: 4vw;
+    line-height: 6.4vw;
+    width: 100%;
   }
 }

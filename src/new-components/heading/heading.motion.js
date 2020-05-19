@@ -1,13 +1,9 @@
 import { gsap } from "gsap";
 
-import styles from "./heading.module.scss";
-
-export const headingAnimation = () => {
-  const title = document.querySelectorAll(`.${styles.titleLine}`);
-
+export const headingAnimation = (ref) => {
   gsap
     .timeline()
-    .to(title, {
+    .to([ref.line1.current, ref.line2.current], {
       opacity: 1,
       y: 0,
       duration: 1,
@@ -16,7 +12,7 @@ export const headingAnimation = () => {
       delay: 0.3,
     })
     .to(
-      `.${styles.headingText}`,
+      ref.text.current,
       {
         opacity: 1,
         x: 0,
@@ -30,16 +26,14 @@ export const headingAnimation = () => {
     );
 };
 
-export const headingAnimationOut = () => {
-  const title = document.querySelectorAll(`.${styles.titleLine}`);
-
-  gsap.to(title, {
+export const headingAnimationOut = (ref) => {
+  gsap.to([ref.line1.current, ref.line2.current], {
     opacity: 0,
     y: "100%",
     duration: 0.1,
     ease: "power3",
   });
-  gsap.to(`.${styles.headingText}`, {
+  gsap.to(ref.text.current, {
     opacity: 0,
     x: "20%",
     ease: "power1",

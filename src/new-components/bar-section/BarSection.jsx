@@ -6,10 +6,12 @@ import Slider from "./../slider/Slider";
 
 const BarSection = () => {
   return (
-    <section id="bar" className={styles.bar}>
-      <Heading />
-      <Slider />
-    </section>
+    <div className={styles.mask}>
+      <section id="bar" className={styles.bar}>
+        <Heading />
+        <Slider />
+      </section>
+    </div>
   );
 };
 

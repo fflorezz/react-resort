@@ -1,6 +1,15 @@
+@import "../../base-scss/abstracts";
+
+.mask {
+  position: relative;
+}
+
 .slider {
   position: relative;
-  margin-top: 9.028vw;
+  margin-top: 6vw;
+  @include atSmall {
+    margin-top: 14vw;
+  }
 }
 .sliderPrev {
   left: 0;
@@ -8,6 +17,31 @@
   width: 50%;
   height: 100%;
   position: absolute;
+  cursor: pointer;
+}
+
+.prevArrow,
+.nextArrow {
+  position: absolute;
+  top: 70%;
+  svg {
+    height: 4vw;
+    width: 4vw;
+    path {
+      fill: white;
+    }
+  }
+}
+
+.prevArrow {
+  left: 0;
+}
+
+.nextArrow {
+  left: 20%;
+  @include atSmall {
+    left: 30%;
+  }
 }
 .sliderNext {
   right: 0;
@@ -15,7 +49,9 @@
   width: 50%;
   height: 100%;
   position: absolute;
+  cursor: pointer;
 }
+
 .sliderContainer {
   position: relative;
 }
@@ -24,6 +60,10 @@
   height: 60vw;
   overflow: hidden;
   position: relative;
+  @include atSmall {
+    width: 60vw;
+    height: 75.667vw;
+  }
 }
 .sliderSmall {
   top: 50%;
@@ -33,6 +73,11 @@
   overflow: hidden;
   position: absolute;
   transform: translateY(-50%);
+  @include atSmall {
+    right: -25vw;
+    width: 42.667vw;
+    height: 42.667vw;
+  }
 }
 .sliderCount {
   top: 50%;
@@ -42,6 +87,15 @@
   display: flex;
   position: absolute;
   transform: translateY(-50%);
+  @include atSmall {
+    top: unset;
+    left: unset;
+    height: 9.333vw;
+    line-height: 9.333vw;
+    margin-top: 5vw;
+    transform: unset;
+    position: relative;
+  }
 }
 .countSmall {
   line-height: 4vw;
@@ -49,6 +103,9 @@
   &::before {
     content: "/";
     padding: 0 0.2vw;
+  }
+  @include atSmall {
+    font-size: 2.933vw;
   }
 }
 .countLarge {
@@ -59,6 +116,10 @@
   line-height: 3.958vw;
   letter-spacing: -0.061vw;
   font-family: Roos St Regis Display;
+  @include atSmall {
+    font-size: 7vw;
+    margin-right: 10px;
+  }
 }
 
 .imageContainer {

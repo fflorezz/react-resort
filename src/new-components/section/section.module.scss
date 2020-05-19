@@ -1,0 +1,18 @@
+@import "../../base-scss/abstracts";
+
+.mask {
+  overflow: hidden;
+}
+.section {
+  margin: 10vw 11vw 5vw;
+  position: relative;
+  @include atSmall {
+    margin: 20vw 8.533vw 5vw;
+  }
+  &.row {
+    display: flex;
+    @include atSmall {
+      flex-wrap: wrap;
+    }
+  }
+}

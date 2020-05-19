@@ -63,8 +63,8 @@ const Nav = () => {
               </HashLink>
             </li>
             <li className={styles.navItem}>
-              <HashLink to="/#bar">
-                <span>Servicios</span>
+              <HashLink to="/#mar">
+                <span>Mar&Montaña</span>
               </HashLink>
             </li>
             <li className={styles.navItem}>

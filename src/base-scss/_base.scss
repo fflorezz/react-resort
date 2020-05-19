@@ -12,10 +12,12 @@ html {
   box-sizing: inherit;
   margin: 0;
   padding: 0;
+  user-select: none;
 }
 
 body {
   width: 100%;
+  overflow-x: hidden;
 }
 
 ul {

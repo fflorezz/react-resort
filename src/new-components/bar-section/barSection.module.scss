@@ -1,4 +1,12 @@
+@import "../../base-scss/abstracts";
+
+.mask {
+  overflow: hidden;
+}
 .bar {
   margin: 13vw 11.111vw;
   position: relative;
+  @include atSmall {
+    margin: 20vw 8.533vw;
+  }
 }
