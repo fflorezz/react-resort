@@ -13,15 +13,18 @@ const Menu = () => {
   const [background, setBackground] = useState(false);
   const { isMenuOpen } = useContext(GlobalContext);
 
-  const handleScrollMenu = useCallback((e) => {
-    let scrolled = document.scrollingElement.scrollTop;
-    if (scrolled > 100 && !background) {
-      setBackground(true);
-    }
-    if (scrolled < 100 && background) {
-      setBackground(false);
-    }
-  });
+  const handleScrollMenu = useCallback(
+    (e) => {
+      let scrolled = document.scrollingElement.scrollTop;
+      if (scrolled > 100 && !background) {
+        setBackground(true);
+      }
+      if (scrolled < 100 && background) {
+        setBackground(false);
+      }
+    },
+    [background]
+  );
 
   useEffect(() => {
     const listener = document.addEventListener("scroll", handleScrollMenu);

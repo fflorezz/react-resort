@@ -6,7 +6,7 @@ import HomePage from "./pages/home-page/HomePage";
 import RoomsPage from "./pages/RoomsPage";
 import SingleRoomPage from "./pages/SingleRoomPage";
 import ErrorPage from "./pages/ErrorPage";
-import Mask from "./new-components/mask/Mask";
+// import Mask from "./new-components/mask/Mask";
 
 import "./App.scss";
 

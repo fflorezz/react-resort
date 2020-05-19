@@ -50,10 +50,10 @@ const Nav = () => {
         <div className={styles.navContainer}>
           <ul className={styles.subItems}>
             <li className={styles.subItem}>
-              <a href="">Contacto</a>
+              <a href="/">Contacto</a>
             </li>
             <li className={styles.subItem}>
-              <a href="">Reservas</a>
+              <a href="/">Reservas</a>
             </li>
           </ul>
           <ul className={styles.navItems}>
@@ -75,17 +75,17 @@ const Nav = () => {
           </ul>
           <ul className={styles.contactItems}>
             <li className={styles.contactItem}>
-              <a href="">
+              <a href="/">
                 <span>contacto</span>
               </a>
             </li>
             <li className={styles.contactItem}>
-              <a href="">
+              <a href="/">
                 <span>contacto</span>
               </a>
             </li>
             <li className={styles.contactItem}>
-              <a href="">
+              <a href="/">
                 <span>contacto</span>
               </a>
             </li>

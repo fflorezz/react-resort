@@ -1,28 +1,19 @@
-import React, { useEffect, useRef } from "react";
-import { useIntersection } from "react-use";
+import React, { useEffect } from "react";
+
+import { useOnScreen } from "../../hooks/useOnScreen";
 
 import styles from "./heading.module.scss";
 import { headingAnimation, headingAnimationOut } from "./heading.motion";
 
 const Heading = () => {
-  const headingRef = useRef(null);
-
-  const intersection = useIntersection(headingRef, {
-    root: null,
-    rootMargin: "0px",
-    threshold: 0.5,
-  });
+  const [ref, visible] = useOnScreen(0.5);
 
   useEffect(() => {
-    if (intersection) {
-      intersection && intersection.intersectionRatio < 0.5
-        ? headingAnimationOut()
-        : headingAnimation();
-    }
-  }, [intersection]);
+    visible ? headingAnimation() : headingAnimationOut();
+  }, [visible]);
 
   return (
-    <div ref={headingRef} className={styles.heading}>
+    <div ref={ref} className={styles.heading}>
       <h1 className={styles.headingTitle}>
         <div className={styles.titleLineContainer}>
           <span className={styles.titleLine}>Bar</span>

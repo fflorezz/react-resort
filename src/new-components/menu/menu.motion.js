@@ -27,7 +27,7 @@ export const menuBgIn = () => {
     ease: "power2",
   });
   gsap.to(`.${styles.menu}`, {
-    boxShadow: "rgba(0, 0, 0, 0.75) 0px 0px 35px -23px",
+    boxShadow: "rgba(0, 0, 0, 0.75) 0px 0px 15px -10px",
     duration: 0.5,
     ease: "power2",
   });

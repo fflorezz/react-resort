@@ -36,14 +36,14 @@ export const headingAnimationOut = () => {
   gsap.to(title, {
     opacity: 0,
     y: "100%",
-    duration: 0.3,
+    duration: 0.1,
     ease: "power3",
   });
   gsap.to(`.${styles.headingText}`, {
     opacity: 0,
     x: "20%",
     ease: "power1",
-    duration: 0.3,
+    duration: 0.1,
     onComplete: () => {
       console.log("finish out");
     },
