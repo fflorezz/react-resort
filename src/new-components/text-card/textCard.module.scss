@@ -1,0 +1,32 @@
+@import "../../base-scss/abstracts";
+
+.card {
+  //border: grey 1px solid;
+  width: 27.778vw;
+  left: 40vw;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  padding: 5.556vw;
+  background: #fff;
+  color: $color-black;
+}
+.title {
+  font-size: 3.472vw;
+  font-weight: 400;
+  letter-spacing: -0.061vw;
+}
+.divider {
+  height: 1px;
+  width: 8.33vw;
+  margin: 2.8vw 0;
+  background: #ff4338;
+  text-align: left;
+}
+.text {
+  font-weight: 300;
+  font-size: 1.042vw;
+  line-height: 1.875vw;
+  letter-spacing: 0.05vw;
+}

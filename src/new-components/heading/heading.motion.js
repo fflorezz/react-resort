@@ -18,9 +18,6 @@ export const headingAnimation = (ref) => {
         x: 0,
         ease: "power1",
         duration: 0.7,
-        onComplete: () => {
-          console.log("finish in");
-        },
       },
       "-=1"
     );
@@ -38,8 +35,5 @@ export const headingAnimationOut = (ref) => {
     x: "20%",
     ease: "power1",
     duration: 0.1,
-    onComplete: () => {
-      console.log("finish out");
-    },
   });
 };

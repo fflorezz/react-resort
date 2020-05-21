@@ -68,9 +68,9 @@ const Nav = () => {
               </HashLink>
             </li>
             <li className={styles.navItem}>
-              <Link to="/rooms">
-                <span>Servicios</span>
-              </Link>
+              <HashLink to="#destacadas">
+                <span>Habitaciones Destacadas</span>
+              </HashLink>
             </li>
           </ul>
           <ul className={styles.contactItems}>

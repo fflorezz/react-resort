@@ -11,7 +11,6 @@ import ErrorPage from "./pages/ErrorPage";
 import "./App.scss";
 
 function App() {
-  console.log("app");
   return (
     <>
       {/* <Mask /> */}

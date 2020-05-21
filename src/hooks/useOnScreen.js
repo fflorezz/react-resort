@@ -11,7 +11,6 @@ export const useOnScreen = (threshold = 0.5) => {
   });
 
   useEffect(() => {
-    console.log(ref);
     if (intersection) {
       if (
         intersection.intersectionRatio < threshold &&

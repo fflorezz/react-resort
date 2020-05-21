@@ -9,6 +9,7 @@ import { sliderIn, sliderOut } from "./slider.motion";
 import styles from "./slider.module.scss";
 
 const Slider = () => {
+  // on screen component transition
   const [maskRef, visible] = useOnScreen(0.1);
   const sliderRef = useRef(null);
 
@@ -16,6 +17,7 @@ const Slider = () => {
     visible ? sliderIn(sliderRef) : sliderOut(sliderRef);
   }, [visible, maskRef]);
 
+  // slides transition
   const [current, setCurrent] = useState(0);
   const [background, setBackground] = useState(0);
   const [background2, setBackground2] = useState(0);

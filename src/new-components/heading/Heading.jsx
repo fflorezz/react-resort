@@ -6,7 +6,7 @@ import styles from "./heading.module.scss";
 import { headingAnimation, headingAnimationOut } from "./heading.motion";
 
 const Heading = ({ text }) => {
-  const [headingRef, visible] = useOnScreen(0.5);
+  const [headingRef, visible] = useOnScreen(0.1);
 
   const ref = {
     line1: useRef(null),
@@ -16,7 +16,7 @@ const Heading = ({ text }) => {
 
   useEffect(() => {
     visible ? headingAnimation(ref) : headingAnimationOut(ref);
-  }, [visible]);
+  }, [visible, ref]);
 
   return (
     <div ref={headingRef} className={styles.heading}>
