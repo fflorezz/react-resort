@@ -1,0 +1,95 @@
+@import "../../base-scss/abstracts";
+
+.btn {
+  display: block;
+  margin: 2.8vw 0 0;
+  height: 2.778vw;
+  line-height: 2.778vw;
+  color: #ff4338;
+  display: block;
+  cursor: pointer;
+  position: relative;
+  padding-left: 3.5vw;
+  font-weight: 500;
+  font-size: 0.8vw;
+  letter-spacing: 0.208vw;
+  text-transform: uppercase;
+  &::before,
+  &::after {
+    left: 0;
+    top: 0.27vw;
+    width: 1.944vw;
+    height: 1.944vw;
+    content: "";
+    position: absolute;
+    transform: rotate(45deg);
+    display: block;
+    will-change: transform;
+    transition: transform 0.25s ease-out;
+  }
+  &::before {
+    border: 1px solid #ff4338;
+    @include atSmall {
+      top: 1vw;
+      width: 5.333vw;
+      height: 5.333vw;
+    }
+  }
+  &::after {
+    background: #ff4338;
+    transform: scale(0.01) rotate(45deg);
+    @include atSmall {
+      top: 1vw;
+      width: 5.333vw;
+      height: 5.333vw;
+    }
+  }
+  .arrow {
+    top: 0.95vw;
+    left: -0.95vw;
+    width: 2.153vw;
+    height: 0.556vw;
+    fill: #ff4338;
+    z-index: 1;
+    position: absolute;
+    transition: all 0.25s ease-out;
+    rect {
+      transform-origin: right center;
+      transition: transform 0.25s ease-out;
+    }
+    @include atSmall {
+      top: 2.2vw;
+      left: -3vw;
+      width: 6.667vw;
+      height: 2.667vw;
+    }
+  }
+  span {
+    display: block;
+    transition: transform 0.25s ease-out;
+  }
+  &:hover {
+    &::before {
+      transform: rotate(-45deg) scale(1.2);
+    }
+    &::after {
+      transform: rotate(-45deg) scale(1.2);
+    }
+    .arrow {
+      fill: #fff;
+      transform: translateX(0.3vw);
+      rect {
+        transform: scaleX(0.5);
+      }
+    }
+    span {
+      transform: translateX(0.3vw);
+    }
+  }
+  @include atSmall {
+    height: 8vw;
+    line-height: 8vw;
+    font-size: 2.933vw;
+    padding-left: 9vw;
+  }
+}

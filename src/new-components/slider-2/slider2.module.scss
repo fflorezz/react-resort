@@ -2,8 +2,11 @@
 
 .container {
   position: relative;
-  //border: 1px solid rgb(255, 0, 0);
   height: 45vw;
+  //border: 1px solid black;
+  @include atSmall {
+    height: 110vw;
+  }
 }
 .slider {
   width: auto;
@@ -12,7 +15,6 @@
   top: 0;
   left: 0;
   display: flex;
-  //border: 1px solid rgb(10, 10, 10);
 }
 
 .slide {
@@ -20,8 +22,14 @@
   height: 45vw;
   position: relative;
   padding: 0 5.556vw;
-  // border: 1px solid green;
+  //border: 1px solid red;
+  @include atSmall {
+    width: 80vw;
+    height: 110vw;
+    padding: 5vw;
+  }
 }
+
 .image {
   overflow: hidden;
   img {
@@ -30,6 +38,10 @@
     width: 40vw;
     height: 45vw;
     object-fit: cover;
+    @include atSmall {
+      width: 100%;
+      height: 60vw;
+    }
   }
 }
 
@@ -40,6 +52,7 @@
   line-height: 3.472vw;
   display: flex;
   position: absolute;
+  z-index: -1;
   transform: translateY(-50%);
   @include atSmall {
     top: unset;
@@ -94,10 +107,17 @@
       fill: rgb(138, 136, 136);
     }
   }
+  @include atSmall {
+    top: 55%;
+    svg {
+      height: 5vw;
+      width: 5vw;
+    }
+  }
 }
 
 .prevArrow {
-  left: 0;
+  left: -3vw;
 }
 
 .nextArrow {

@@ -1,21 +1,17 @@
 import React from "react";
 
-import { Link } from "react-router-dom";
 import ViewBtn from "./../viewBtn/ViewBtn";
+import { trimText } from "./../../utils/trimText";
 
 import styles from "./textCard.module.scss";
 
-const TextCard = ({ refCallback }) => {
+const TextCard = ({ refCallback, title, description, slug }) => {
   return (
     <div ref={(el) => refCallback(el)} className={styles.card}>
-      <h2 className={styles.title}>Habitacion Uno</h2>
+      <h2 className={styles.title}>{title}</h2>
       <div className={styles.divider} />
-      <p className={styles.text}>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolor, nulla.
-      </p>
-      <Link to="/">
-        <ViewBtn />
-      </Link>
+      <p className={styles.text}>{trimText(description, 150)}</p>
+      <ViewBtn slug={slug} />
     </div>
   );
 };
