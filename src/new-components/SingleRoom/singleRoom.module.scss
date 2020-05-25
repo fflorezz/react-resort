@@ -1,0 +1,151 @@
+@import "../../base-scss/abstracts";
+
+.container {
+  position: relative;
+  background: #fff;
+  padding: 5vw 0;
+  z-index: 100;
+  @include atSmall {
+    padding: 20vw 0;
+  }
+}
+.btnClose {
+  position: fixed;
+  top: 3.472vw;
+  right: 3.472vw;
+  width: 4vw;
+  height: 4vw;
+  z-index: 5;
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid rgba(58, 54, 54, 0.2);
+  backface-visibility: hidden;
+  @include atSmall {
+    top: 8.33vw;
+    right: 8.33vw;
+    width: 13.333vw;
+    height: 13.333vw;
+    position: absolute;
+  }
+}
+.btnReserve {
+  z-index: 5;
+  right: 3.472vw;
+  bottom: 3.472vw;
+  display: block;
+  position: fixed;
+  color: #fff;
+  cursor: pointer;
+  width: 12.153vw;
+  height: 3.819vw;
+  background: #ff4338;
+  font-weight: 600;
+  font-size: 0.9vw;
+  text-align: center;
+  line-height: 4vw;
+  letter-spacing: 0.208vw;
+  text-transform: uppercase;
+  @include atSmall {
+    right: 0;
+    margin-top: 20vw;
+    height: 13.333vw;
+    width: 100%;
+    font-size: 3vw;
+    position: relative;
+  }
+}
+.room {
+  margin: 0 16.667vw 8.333vw;
+  @include atSmall {
+    margin: 0 8vw;
+  }
+}
+.roomTitle {
+  margin-left: 11.111vw;
+  font-size: 6vw;
+  font-weight: 400;
+  line-height: 6vw;
+  letter-spacing: -0.18vw;
+  @include atSmall {
+    margin-left: 0;
+    font-size: 12vw;
+    line-height: 12vw;
+  }
+}
+.roomImage {
+  margin: 5vw 0 5vw;
+  img {
+    width: 100%;
+    border: none;
+    display: block;
+  }
+  @include atSmall {
+    margin: 15vw 0 10vw;
+  }
+}
+
+.roomDescription {
+  margin-top: 6vw;
+  font-weight: 300;
+  font-size: 1.2vw;
+  line-height: 1.8vw;
+  letter-spacing: 0.05vw;
+  @include atSmall {
+    font-size: 4vw;
+    line-height: 6.4vw;
+  }
+}
+
+h4 {
+  margin-top: 2.778vw;
+  font-weight: 800;
+  font-size: 1.2vw;
+  line-height: 1.8vw;
+  letter-spacing: 0.05vw;
+  @include atSmall {
+    margin-top: 10vw;
+    font-size: 5vw;
+    line-height: 6.4vw;
+  }
+}
+
+.infoList,
+.extraList {
+  margin-top: 2vw;
+  margin-left: 1.389vw;
+  @include atSmall {
+    margin-left: 0;
+    margin-top: 5.333vw;
+  }
+
+  li {
+    line-height: 2.431vw;
+    font-weight: 300;
+    font-size: 1.042vw;
+    position: relative;
+    @include atSmall {
+      line-height: 8vw;
+      padding-left: 8vw;
+      font-size: 4vw;
+    }
+    span {
+      font-weight: 400;
+    }
+    &::before {
+      top: 1vw;
+      left: -1.3vw;
+      width: 0.278vw;
+      height: 0.278vw;
+      content: "";
+      background: #ccc;
+      position: absolute;
+      transform: rotate(45deg);
+      @include atSmall {
+        top: 2.7vw;
+        left: 2.5vw;
+        width: 1.867vw;
+        height: 1.867vw;
+      }
+    }
+  }
+}

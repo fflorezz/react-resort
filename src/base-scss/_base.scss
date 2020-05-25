@@ -18,6 +18,11 @@ html {
 body {
   width: 100%;
   overflow-x: hidden;
+  scrollbar-width: none;
+  position: relative;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 ul {
@@ -28,4 +33,10 @@ a {
   text-decoration: none;
   color: inherit;
   cursor: pointer;
+}
+
+button {
+  outline: inherit;
+  border: none;
+  font: inherit;
 }

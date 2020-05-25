@@ -3,7 +3,6 @@ import React, { useContext } from "react";
 import { RoomContext } from "./../../context/room.context";
 
 import Hero from "./../../new-components/hero/Hero";
-// import ScrollToTop from "./../../components/ScrollToTop";
 import Section from "../../new-components/section/Section";
 import Heading from "./../../new-components/heading/Heading";
 import Slider from "./../../new-components/slider/Slider";
@@ -19,7 +18,6 @@ const HomePage = () => {
 
   return (
     <>
-      {/* <ScrollToTop /> */}
       <Hero />
       <Section id="bar">
         <Heading text={text.headingBar} />

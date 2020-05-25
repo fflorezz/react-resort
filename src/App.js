@@ -1,26 +1,30 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, useLocation } from "react-router-dom";
 
+import { AnimatePresence } from "framer-motion";
 import Header from "./new-components/header/Header";
-import HomePage from "./pages/home-page/HomePage";
+import HomePage from "./pages/home/HomePage";
 import RoomsPage from "./pages/RoomsPage";
-import SingleRoomPage from "./pages/SingleRoomPage";
+import SingleRoomPage from "./pages/single-room/SingleRoomPage";
 import ErrorPage from "./pages/ErrorPage";
 // import Mask from "./new-components/mask/Mask";
 
 import "./App.scss";
 
 function App() {
+  const location = useLocation();
   return (
     <>
       {/* <Mask /> */}
       <Header />
-      <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route exact path="/rooms" component={RoomsPage} />
-        <Route exact path="/rooms/:slug" component={SingleRoomPage} />
-        <Route component={ErrorPage} />
-      </Switch>
+      <AnimatePresence>
+        <Switch location={location} key={location.pathname}>
+          <Route exact path="/" component={HomePage} />
+          <Route exact path="/rooms" component={RoomsPage} />
+          <Route exact path="/rooms/:slug" component={SingleRoomPage} />
+          <Route component={ErrorPage} />
+        </Switch>
+      </AnimatePresence>
     </>
   );
 }
