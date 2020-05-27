@@ -7,6 +7,7 @@ import ModalAnimation from "./../../new-components/modal-animation/ModalAnimatio
 import styles from "./roomsPage.module.scss";
 import { heroAnimation } from "./rooms.motion";
 import { useRef } from "react";
+import RoomsContainer from "./../../new-components/rooms-container/RoomsContainer";
 
 const RoomsPage = () => {
   const history = useHistory();
@@ -30,10 +31,12 @@ const RoomsPage = () => {
         <button className={styles.btnReserve}>Reservar</button>
         <div className={styles.hero}>
           <h1 ref={heroRef} className={styles.heroTitle}>
-            Nuaestras Habitaciones
+            Nuestras Habitaciones
           </h1>
         </div>
-        <section className={styles.rooms}></section>
+        <section className={styles.rooms}>
+          <RoomsContainer />
+        </section>
       </div>
     </ModalAnimation>
   );
