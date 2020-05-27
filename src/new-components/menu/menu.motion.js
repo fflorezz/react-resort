@@ -31,6 +31,11 @@ export const menuBgIn = () => {
     duration: 0.5,
     ease: "power2",
   });
+  gsap.to(`.${styles.logo}`, {
+    opacity: 0.5,
+    duration: 0.5,
+    ease: "power2",
+  });
 };
 
 export const menuBgOut = () => {
@@ -56,6 +61,11 @@ export const menuBgOut = () => {
   });
   gsap.to(`.${styles.menu}`, {
     boxShadow: "none",
+    duration: 0.5,
+    ease: "power2",
+  });
+  gsap.to(`.${styles.logo}`, {
+    opacity: 0,
     duration: 0.5,
     ease: "power2",
   });

@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import { motion } from "framer-motion";
 
 import { RoomContext } from "./../../context/room.context";
 

@@ -108,18 +108,21 @@
     backface-visibility: hidden;
     transform: translateY(-50%);
   }
-  // &.white {
-  //   // .menuBar {
-  //   //   color: black;
-  //   // }
-  //   // .menuBarBg {
-  //   //   opacity: 1;
-  //   // }
-  //   .menuDivider {
-  //     background-color: rgb(42, 42, 42);
-  //   }
-  //   .buttonInstagram {
-  //     fill: black;
-  //   }
-  // }
+}
+
+.logo {
+  width: 5vw;
+  height: 5vw;
+  position: fixed;
+  left: 2vw;
+  top: 3vw;
+  z-index: 100;
+  opacity: 0.7;
+  filter: brightness(0);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  cursor: pointer;
+  @include atSmall {
+    display: none;
+  }
 }

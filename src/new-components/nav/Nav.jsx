@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { motion } from "framer-motion";
 import { HashLink } from "react-router-hash-link";
@@ -15,10 +15,29 @@ const Nav = () => {
   const { isMenuOpen, toggleMenu } = useContext(GlobalContext);
   const history = useHistory();
 
-  history.listen((location, action) => {
-    if (isMenuOpen) {
-      toggleMenu();
-    }
+  const [exit, setExit] = useState(true);
+
+  useEffect(() => {
+    const historyListener = history.listen((location) => {
+      // turn off exit animation when  the path changes to /rooms
+      if (location.pathname === "/rooms") {
+        setExit(false);
+        // Wait until room's animation end and then close nav
+        setTimeout(() => {
+          toggleMenu();
+        }, 900);
+        return;
+      }
+      // close nav when the route changes
+      if (isMenuOpen) {
+        toggleMenu();
+      }
+    });
+
+    return () => {
+      // Remove history listener
+      historyListener();
+    };
   });
 
   useEffect(() => {
@@ -28,12 +47,12 @@ const Nav = () => {
   return (
     <motion.nav
       key="modal"
-      exit={{ y: "100%", opacity: 1 }}
+      exit={exit ? { y: "100%", opacity: 1 } : { y: 0 }}
       transition={{ duration: 0.6, ease: "easeInOut" }}
       className={styles.nav}
     >
       <motion.div
-        exit={{ y: "-100%", opacity: 1 }}
+        exit={exit ? { y: "-100%", opacity: 1 } : { y: 0 }}
         transition={{ duration: 0.6, ease: "easeInOut" }}
         className={styles.navMask}
       >
@@ -50,10 +69,10 @@ const Nav = () => {
         <div className={styles.navContainer}>
           <ul className={styles.subItems}>
             <li className={styles.subItem}>
-              <a href="/">Contacto</a>
+              <Link to="/">Reservas</Link>
             </li>
             <li className={styles.subItem}>
-              <a href="/">Reservas</a>
+              <Link to="/rooms">Habitaciones</Link>
             </li>
           </ul>
           <ul className={styles.navItems}>

@@ -58,7 +58,11 @@ const Slider2 = ({ rooms }) => {
           {rooms.map((room, idx) => (
             <div ref={slideRef} key={room.id} className={styles.slide}>
               <div className={styles.image}>
-                <img src={room.images[0]} ref={(el) => (imagesRef[idx] = el)} />
+                <img
+                  src={room.images[0]}
+                  ref={(el) => (imagesRef[idx] = el)}
+                  alt=""
+                />
               </div>
               <TextCard
                 title={room.name}

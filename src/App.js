@@ -4,7 +4,7 @@ import { Route, Switch, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import Header from "./new-components/header/Header";
 import HomePage from "./pages/home/HomePage";
-import RoomsPage from "./pages/RoomsPage";
+import RoomsPage from "./pages/rooms/RoomsPage";
 import SingleRoomPage from "./pages/single-room/SingleRoomPage";
 import ErrorPage from "./pages/ErrorPage";
 // import Mask from "./new-components/mask/Mask";

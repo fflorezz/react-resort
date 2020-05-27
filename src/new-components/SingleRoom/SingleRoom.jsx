@@ -1,5 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
+import { AiOutlineClose } from "react-icons/ai";
 
 import styles from "./singleRoom.module.scss";
 
@@ -24,7 +25,7 @@ const SingleRoomPage = ({ room }) => {
   return (
     <div className={styles.container}>
       <button onClick={handleBack} className={styles.btnClose}>
-        x
+        <AiOutlineClose className={styles.iconClose} />
       </button>
       <section className={styles.room}>
         <h1 className={styles.roomTitle}>{name}</h1>

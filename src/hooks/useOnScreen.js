@@ -24,7 +24,7 @@ export const useOnScreen = (threshold = 0.5) => {
         setIsIn(true);
       }
     }
-  }, [intersection, threshold]);
+  }, [intersection, threshold, isIn]);
 
   return [ref, visible];
 };

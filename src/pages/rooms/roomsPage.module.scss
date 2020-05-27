@@ -1,0 +1,106 @@
+@import "../../base-scss/abstracts";
+
+.container {
+  position: relative;
+  background: #fff;
+  z-index: 100;
+  @include atSmall {
+    padding: 0;
+  }
+}
+
+.btnClose {
+  position: fixed;
+  top: 3.472vw;
+  right: 3.472vw;
+  width: 4vw;
+  height: 4vw;
+  z-index: 5;
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid rgba(58, 54, 54, 0.2);
+  backface-visibility: hidden;
+  @include atSmall {
+    top: 8.33vw;
+    right: 8.33vw;
+    width: 13.333vw;
+    height: 13.333vw;
+    position: absolute;
+  }
+  .iconClose {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 5;
+    fill: $color-black;
+    width: 30vw;
+    height: 60%;
+    overflow: hidden;
+    opacity: 0.3;
+    transition: $all-primary;
+    transform: translate(-50%, -50%);
+  }
+  &:hover {
+    .iconClose {
+      opacity: 0.7;
+    }
+  }
+}
+.btnReserve {
+  z-index: 5;
+  right: 3.472vw;
+  bottom: 3.472vw;
+  display: block;
+  position: fixed;
+  color: #fff;
+  cursor: pointer;
+  width: 12.153vw;
+  height: 3.819vw;
+  background: #ff4338;
+  font-weight: 600;
+  font-size: 0.9vw;
+  text-align: center;
+  line-height: 4vw;
+  letter-spacing: 0.208vw;
+  text-transform: uppercase;
+  @include atSmall {
+    display: none;
+  }
+}
+
+.hero {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-image: url(../../images/rooms-hero.jpg);
+  background-size: cover;
+  @include atSmall {
+    height: 50vh;
+  }
+}
+.heroTitle {
+  margin-top: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 6vw;
+  font-weight: 400;
+  line-height: 6vw;
+  letter-spacing: -0.18vw;
+  @include atSmall {
+    margin-left: 0;
+    font-size: 12vw;
+    line-height: 12vw;
+  }
+}
+.rooms {
+  margin: 0 16.667vw;
+  height: 100vh;
+  @include atSmall {
+    margin: 0 8vw;
+  }
+}

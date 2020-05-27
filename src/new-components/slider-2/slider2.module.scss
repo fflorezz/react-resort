@@ -5,7 +5,7 @@
   height: 45vw;
   //border: 1px solid black;
   @include atSmall {
-    height: 110vw;
+    height: 120vw;
   }
 }
 .slider {
@@ -55,13 +55,7 @@
   z-index: -1;
   transform: translateY(-50%);
   @include atSmall {
-    top: unset;
-    left: unset;
-    height: 9.333vw;
-    line-height: 9.333vw;
-    margin-top: 5vw;
-    transform: unset;
-    position: relative;
+    display: none;
   }
 }
 .countSmall {
