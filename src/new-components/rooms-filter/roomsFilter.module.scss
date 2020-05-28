@@ -1,3 +1,5 @@
+@import "../../base-scss/abstracts";
+
 .filterContainer {
   padding: 5vw 0;
 }
@@ -18,8 +20,7 @@
   text-transform: capitalize;
   select {
     border: 1px solid rgba(131, 131, 131, 0.2);
-    padding: 0.8vw 0.5vw;
-    border-radius: 0.5vw;
+    padding: 0.5vw 0.5vw;
     color: rgb(68, 68, 68);
   }
 }
@@ -35,6 +36,28 @@
   background: transparent;
   font-size: 1rem;
 }
+
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  background: #f0f0f0;
+  outline: none;
+  opacity: 0.8;
+  border-radius: 25px;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+  margin-top: 0.8vw;
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: $color-primary;
+    cursor: pointer;
+  }
+}
+
 .sizeInputs {
   display: flex;
 }

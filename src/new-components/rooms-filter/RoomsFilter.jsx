@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import { RoomContext } from "../../context/room.context";
 
 import styles from "./roomsFilter.module.scss";
+import { motion } from "framer-motion";
 
 const RoomsFilter = () => {
   const {
@@ -14,7 +15,7 @@ const RoomsFilter = () => {
   } = useContext(RoomContext);
 
   const [state, setState] = useState({
-    type: "all",
+    type: "todas",
     capacity: "1",
     price: maxPrice,
     minSize: minSize,
@@ -41,8 +42,12 @@ const RoomsFilter = () => {
   }
 
   return (
-    <section className={styles.filterContainer}>
-      {/* <h2 className={styles.title}>Buscar Habitaciones</h2> */}
+    <motion.section
+      initial={{ opacity: 0, x: "10%" }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ delay: 0.7, duration: 0.7 }}
+      className={styles.filterContainer}
+    >
       <form action="" className={styles.filterForm}>
         {/* Select Type */}
         <div className={styles.formGroup}>
@@ -91,26 +96,11 @@ const RoomsFilter = () => {
             id="price"
             value={state.price}
             onChange={handleChange}
-            className={styles.formControl}
+            className={`${styles.formControl} ${styles.slider}`}
           />
         </div>
-        {/* end room price */}
-        {/* extras */}
-        {/* <div className={styles.fromGroup}>
-          <div className={styles.singleExtra}>
-            <input
-              type="checkbox"
-              name="pets"
-              id="pets"
-              checked={state.pets}
-              onChange={handleChange}
-            />
-            <label htmlFor="pets">Mascotas</label>
-          </div>
-        </div> */}
-        {/* end extras */}
       </form>
-    </section>
+    </motion.section>
   );
 };
 

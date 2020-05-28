@@ -30,7 +30,7 @@ export const RoomProvider = ({ children }) => {
         const maxPrice = Math.max(...rooms.map((item) => item.price));
         const maxSize = Math.max(...rooms.map((item) => item.size));
         const options = {
-          type: getValuesForOptions(rooms, "type", ["Todas"]),
+          type: getValuesForOptions(rooms, "type", ["todas"]),
           capacity: getValuesForOptions(rooms, "capacity"),
         };
 
