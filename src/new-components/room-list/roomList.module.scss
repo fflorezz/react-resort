@@ -1,0 +1,23 @@
+@import "../../base-scss/abstracts";
+
+.roomsList {
+  padding: 1vw 0;
+  margin-left: 0;
+  @include atSmall {
+    padding: 5vw 0;
+  }
+}
+.roomsListCenter {
+  width: 65vw;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(20vw, 1fr));
+  grid-row-gap: 2vw;
+  grid-column-gap: 2vw;
+  @include atSmall {
+    width: 80vw;
+    grid-template-columns: repeat(auto-fill, minmax(80vw, 1fr));
+    grid-row-gap: 5vw;
+    grid-column-gap: 0;
+  }
+}

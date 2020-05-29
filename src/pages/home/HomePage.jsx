@@ -12,6 +12,7 @@ import Slider2 from "./../../new-components/slider-2/Slider2";
 import { text } from "./../../text";
 import imgMar from "../../images/mar/mar-01.jpg";
 import Loading from "./../../components/Loading";
+import ModalAnimation from "./../../new-components/modal-animation/ModalAnimation";
 
 const HomePage = () => {
   const { featuredRooms, loading } = useContext(RoomContext);

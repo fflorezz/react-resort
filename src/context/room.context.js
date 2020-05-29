@@ -62,7 +62,7 @@ export const RoomProvider = ({ children }) => {
     minSize = parseInt(minSize);
     maxSize = parseInt(maxSize);
 
-    if (type !== "all") {
+    if (type !== "todas") {
       tempRooms = tempRooms.filter((room) => room.type === type);
     }
     if (capacity !== 1) {
@@ -74,12 +74,12 @@ export const RoomProvider = ({ children }) => {
     tempRooms = tempRooms.filter(
       (room) => minSize <= room.size && room.size <= maxSize
     );
-    if (breakfast) {
-      tempRooms = tempRooms.filter((room) => room.breakfast === breakfast);
-    }
-    if (pets) {
-      tempRooms = tempRooms.filter((room) => room.pets === pets);
-    }
+    // if (breakfast) {
+    //   tempRooms = tempRooms.filter((room) => room.breakfast === breakfast);
+    // }
+    // if (pets) {
+    //   tempRooms = tempRooms.filter((room) => room.pets === pets);
+    // }
     setState({
       ...state,
       sortedRooms: tempRooms,

@@ -23,7 +23,7 @@ const RoomsPage = () => {
   }, []);
 
   return (
-    <ModalAnimation>
+    <ModalAnimation zIndex={100}>
       <div className={styles.container}>
         <button onClick={handleBack} className={styles.btnClose}>
           <AiOutlineClose className={styles.iconClose} />
