@@ -9,7 +9,7 @@ const RoomsList = ({ rooms }) => {
     <div>
       {rooms.length === 0 ? (
         <div className="empty-search">
-          <h3>Unfortunate no rooms matched your search parameter</h3>
+          <h3> No encontramos habitaciones con estos parámetros</h3>
         </div>
       ) : (
         <section className={styles.roomsList}>

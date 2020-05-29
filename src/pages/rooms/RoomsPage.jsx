@@ -17,13 +17,12 @@ const RoomsPage = () => {
   }
 
   const heroRef = useRef(null);
-
   useEffect(() => {
     heroAnimation(heroRef);
   }, []);
 
   return (
-    <ModalAnimation zIndex={100}>
+    <ModalAnimation>
       <div className={styles.container}>
         <button onClick={handleBack} className={styles.btnClose}>
           <AiOutlineClose className={styles.iconClose} />

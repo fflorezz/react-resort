@@ -54,7 +54,7 @@ export const RoomProvider = ({ children }) => {
   }, []);
 
   function filterRooms(filters) {
-    let { type, capacity, price, minSize, maxSize, breakfast, pets } = filters;
+    let { type, capacity, price, minSize, maxSize } = filters;
     const rooms = state.rooms;
     let tempRooms = [...rooms];
     capacity = parseInt(capacity);
@@ -74,12 +74,7 @@ export const RoomProvider = ({ children }) => {
     tempRooms = tempRooms.filter(
       (room) => minSize <= room.size && room.size <= maxSize
     );
-    // if (breakfast) {
-    //   tempRooms = tempRooms.filter((room) => room.breakfast === breakfast);
-    // }
-    // if (pets) {
-    //   tempRooms = tempRooms.filter((room) => room.pets === pets);
-    // }
+
     setState({
       ...state,
       sortedRooms: tempRooms,

@@ -10,8 +10,6 @@ const RoomsContainer = () => {
   const state = useContext(RoomContext);
   const { loading, sortedRooms } = state;
 
-  console.log(sortedRooms);
-
   return (
     <div>
       {loading ? (
