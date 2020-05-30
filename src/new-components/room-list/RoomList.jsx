@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import RoomCard from "./../room-card/RoomCard";
 
 import styles from "./roomList.module.scss";
+import { cardsAnimation, cardsAnimationOut } from "./roomList.motion";
 
 const RoomsList = ({ rooms }) => {
+  const cardsRef = [];
+
+  useEffect(() => {
+    console.log(cardsRef);
+    cardsAnimationOut(cardsRef);
+    cardsAnimation(cardsRef);
+  }, [rooms]);
+
   return (
     <div>
       {rooms.length === 0 ? (
@@ -15,7 +24,11 @@ const RoomsList = ({ rooms }) => {
         <section className={styles.roomsList}>
           <div className={styles.roomsListCenter}>
             {rooms.map((room, idx) => (
-              <RoomCard key={idx} room={room} />
+              <RoomCard
+                key={idx}
+                room={room}
+                refCallback={(el) => (cardsRef[idx] = el)}
+              />
             ))}
           </div>
         </section>
