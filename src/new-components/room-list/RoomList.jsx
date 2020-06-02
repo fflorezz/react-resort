@@ -1,18 +1,17 @@
 import React, { useEffect } from "react";
+import { motion, useAnimation } from "framer-motion";
 
 import RoomCard from "./../room-card/RoomCard";
 
 import styles from "./roomList.module.scss";
-import { cardsAnimation, cardsAnimationOut } from "./roomList.motion";
+import { container } from "./roomList.motion.js";
 
 const RoomsList = ({ rooms }) => {
-  const cardsRef = [];
+  const controls = useAnimation();
 
   useEffect(() => {
-    console.log(cardsRef);
-    cardsAnimationOut(cardsRef);
-    cardsAnimation(cardsRef);
-  }, [rooms]);
+    controls.start("show");
+  }, [rooms, controls]);
 
   return (
     <div>
@@ -22,15 +21,16 @@ const RoomsList = ({ rooms }) => {
         </div>
       ) : (
         <section className={styles.roomsList}>
-          <div className={styles.roomsListCenter}>
+          <motion.div
+            variants={container}
+            initial="hidden"
+            animate={controls}
+            className={styles.roomsListCenter}
+          >
             {rooms.map((room, idx) => (
-              <RoomCard
-                key={idx}
-                room={room}
-                refCallback={(el) => (cardsRef[idx] = el)}
-              />
+              <RoomCard key={room.id} room={room} />
             ))}
-          </div>
+          </motion.div>
         </section>
       )}
     </div>

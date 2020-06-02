@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useCallback, useContext } from "react";
 import { Link } from "react-router-dom";
 import { AiOutlineInstagram } from "react-icons/ai";
-import { HashLink } from "react-router-hash-link";
 
 import { GlobalContext } from "../../context/global.context";
 
@@ -13,7 +12,7 @@ import { menuBgIn, menuBgOut } from "./menu.motion";
 
 const Menu = () => {
   const [background, setBackground] = useState(false);
-  const { isMenuOpen } = useContext(GlobalContext);
+  const { isNavOpen } = useContext(GlobalContext);
 
   // check if the menu is at the top of the page
   const handleScrollMenu = useCallback(
@@ -39,18 +38,26 @@ const Menu = () => {
 
   // changes the background of the menu when the user scrolls
   useEffect(() => {
-    if (!isMenuOpen && background) {
+    if (!isNavOpen && background) {
       menuBgIn();
     } else {
       menuBgOut();
     }
-  }, [background, isMenuOpen]);
+  }, [background, isNavOpen]);
 
   return (
     <>
-      <HashLink smooth to="/#hero">
-        <img className={styles.logo} src={logo} alt="aurora" />
-      </HashLink>
+      <img
+        onClick={() => {
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          });
+        }}
+        className={styles.logo}
+        src={logo}
+        alt="aurora"
+      />
       <div className={styles.menu}>
         <div className={styles.menuBar}>
           <div className={styles.menuBarBg} />

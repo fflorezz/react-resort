@@ -6,7 +6,7 @@ import logo from "../../images/logo_transparent_white.png";
 
 const Hero = () => {
   return (
-    <div id="hero" className={styles.hero}>
+    <div className={styles.hero}>
       <img className={styles.heroImage} src={heroImage} alt="resort-hotel" />
       <img className={styles.logo} src={logo} alt="" />
       <div className={styles.heroText}>

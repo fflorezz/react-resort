@@ -12,31 +12,31 @@ import styles from "./nav.module.scss";
 import { navAnimation } from "./nav.motion";
 
 const Nav = () => {
-  const { isMenuOpen, toggleMenu } = useContext(GlobalContext);
+  const { isNavOpen, toggleNav } = useContext(GlobalContext);
   const history = useHistory();
 
   const [exit, setExit] = useState(true);
 
   useEffect(() => {
-    const historyListener = history.listen((location) => {
+    const removeHistoryListener = history.listen((location) => {
       // turn off exit animation when  the path changes to /rooms
       if (location.pathname === "/rooms") {
         setExit(false);
         // Wait until room's animation end and then close nav
         setTimeout(() => {
-          toggleMenu();
+          toggleNav();
         }, 900);
         return;
       }
       // close nav when the route changes
-      if (isMenuOpen) {
-        toggleMenu();
+      if (isNavOpen) {
+        toggleNav();
       }
     });
 
     return () => {
       // Remove history listener
-      historyListener();
+      removeHistoryListener();
     };
   });
 

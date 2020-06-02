@@ -6,14 +6,14 @@ import styles from "./burgerBtn.module.scss";
 import { GlobalContext } from "../../context/global.context";
 
 const BurgerBtn = () => {
-  const { isMenuOpen, toggleMenu } = useContext(GlobalContext);
+  const { isNavOpen, toggleNav } = useContext(GlobalContext);
 
   return (
     <button
-      onClick={toggleMenu}
+      onClick={toggleNav}
       type="button"
       className={
-        isMenuOpen ? `${styles.burgerBtn} ${styles.isOpen}` : styles.burgerBtn
+        isNavOpen ? `${styles.burgerBtn} ${styles.isOpen}` : styles.burgerBtn
       }
     >
       <div className={styles.btnBackground}></div>

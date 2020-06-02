@@ -1,12 +1,15 @@
 import React from "react";
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
 import styles from "./roomCard.module.scss";
+import { item } from "./rommcard.motion.js";
 
-const RoomCard = ({ room, refCallback }) => {
+const RoomCard = ({ room }) => {
   const { name, slug, images } = room;
+
   return (
-    <article ref={(el) => refCallback(el)} className={styles.room}>
+    <motion.div variants={item} className={styles.room}>
       <Link to={`/rooms/${slug}`} className={styles.roomLink}>
         <div className={styles.imgContainer}>
           <img src={images[0]} alt="single room" />
@@ -15,7 +18,7 @@ const RoomCard = ({ room, refCallback }) => {
           </div>
         </div>
       </Link>
-    </article>
+    </motion.div>
   );
 };
 

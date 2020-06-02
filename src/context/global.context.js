@@ -4,14 +4,14 @@ export const GlobalContext = createContext();
 
 export const GlobalProvider = ({ children }) => {
   const [state, setState] = useState({
-    isMenuOpen: false,
+    isNavOpen: false,
     intro: true,
   });
 
-  function toggleMenu() {
+  function toggleNav() {
     setState({
       ...state,
-      isMenuOpen: !state.isMenuOpen,
+      isNavOpen: !state.isNavOpen,
     });
   }
 
@@ -23,7 +23,7 @@ export const GlobalProvider = ({ children }) => {
   }
 
   return (
-    <GlobalContext.Provider value={{ ...state, toggleMenu, turnofIntro }}>
+    <GlobalContext.Provider value={{ ...state, toggleNav, turnofIntro }}>
       {children}
     </GlobalContext.Provider>
   );

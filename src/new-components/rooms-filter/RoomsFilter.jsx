@@ -2,7 +2,6 @@ import React, { useContext, useState, useEffect } from "react";
 import { RoomContext } from "../../context/room.context";
 
 import styles from "./roomsFilter.module.scss";
-import { motion } from "framer-motion";
 
 const RoomsFilter = () => {
   const {
@@ -42,12 +41,7 @@ const RoomsFilter = () => {
   }
 
   return (
-    <motion.section
-      initial={{ opacity: 0, x: "10%" }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ delay: 0.7, duration: 0.7 }}
-      className={styles.filterContainer}
-    >
+    <section className={styles.filterContainer}>
       <form action="" className={styles.filterForm}>
         {/* Select Type */}
         <div className={styles.formGroup}>
@@ -100,7 +94,7 @@ const RoomsFilter = () => {
           />
         </div>
       </form>
-    </motion.section>
+    </section>
   );
 };
 

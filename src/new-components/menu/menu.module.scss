@@ -97,6 +97,12 @@
     width: 1.8vw;
     height: 1.8vw;
     fill: $color-white;
+    transition: $all-primary;
+    &:hover {
+      path {
+        fill: $color-primary;
+      }
+    }
   }
   .menuDivider {
     width: 1px;

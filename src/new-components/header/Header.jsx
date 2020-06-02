@@ -11,7 +11,7 @@ import { GlobalContext } from "../../context/global.context";
 import styles from "./header.module.scss";
 
 const Header = () => {
-  const { isMenuOpen } = useContext(GlobalContext);
+  const { isNavOpen } = useContext(GlobalContext);
 
   return (
     <div className={styles.header}>
@@ -19,7 +19,7 @@ const Header = () => {
         <img className={styles.logo} src={logo} alt="" />
       </Link>
       <Menu />
-      <AnimatePresence>{isMenuOpen && <Nav />}</AnimatePresence>
+      <AnimatePresence>{isNavOpen && <Nav />}</AnimatePresence>
     </div>
   );
 };

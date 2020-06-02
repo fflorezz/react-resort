@@ -17,7 +17,7 @@ const ModalAnimation = ({ children }) => {
         animate={{ y: 0 }}
         exit={{ y: "-100%", opacity: 1 }}
         transition={{ duration: 1, ease: [0.84, -0.015, 0.42, 1.01] }}
-        className={styles.scroll}
+        className={styles.containerFixed}
       >
         <motion.div
           initial={{ y: "-100vh", opacity: 0.8 }}
