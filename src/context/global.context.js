@@ -5,6 +5,7 @@ export const GlobalContext = createContext();
 export const GlobalProvider = ({ children }) => {
   const [state, setState] = useState({
     isNavOpen: false,
+    isContactOpen: false,
     intro: true,
   });
 
@@ -12,6 +13,13 @@ export const GlobalProvider = ({ children }) => {
     setState({
       ...state,
       isNavOpen: !state.isNavOpen,
+    });
+  }
+
+  function toggleContact() {
+    setState({
+      ...state,
+      isContactOpen: !state.isContactOpen,
     });
   }
 
@@ -23,7 +31,9 @@ export const GlobalProvider = ({ children }) => {
   }
 
   return (
-    <GlobalContext.Provider value={{ ...state, toggleNav, turnofIntro }}>
+    <GlobalContext.Provider
+      value={{ ...state, toggleNav, toggleContact, turnofIntro }}
+    >
       {children}
     </GlobalContext.Provider>
   );

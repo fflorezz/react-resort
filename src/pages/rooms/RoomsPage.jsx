@@ -1,9 +1,9 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import { AiOutlineClose } from "react-icons/ai";
 
 import ModalAnimation from "./../../new-components/modal-animation/ModalAnimation";
 import RoomsContainer from "./../../new-components/rooms-container/RoomsContainer";
+import ButtonClose from "./../../new-components/button-close/ButtonClose";
 
 import styles from "./roomsPage.module.scss";
 
@@ -17,9 +17,7 @@ const RoomsPage = () => {
   return (
     <ModalAnimation>
       <div className={styles.container}>
-        <button onClick={handleBack} className={styles.btnClose}>
-          <AiOutlineClose className={styles.iconClose} />
-        </button>
+        <ButtonClose handleClick={handleBack} />
         <button className={styles.btnReserve}>Reservar</button>
         <div className={styles.hero}>
           <h1 className={styles.heroTitle}>Nuestras Habitaciones</h1>

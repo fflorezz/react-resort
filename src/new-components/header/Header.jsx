@@ -9,9 +9,10 @@ import Nav from "./../nav/Nav";
 import { GlobalContext } from "../../context/global.context";
 
 import styles from "./header.module.scss";
+import Contacto from "./../contacto/Contacto";
 
 const Header = () => {
-  const { isNavOpen } = useContext(GlobalContext);
+  const { isNavOpen, isContactOpen } = useContext(GlobalContext);
 
   return (
     <div className={styles.header}>
@@ -20,6 +21,7 @@ const Header = () => {
       </Link>
       <Menu />
       <AnimatePresence>{isNavOpen && <Nav />}</AnimatePresence>
+      {isContactOpen && <Contacto />}
     </div>
   );
 };

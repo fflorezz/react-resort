@@ -9,10 +9,17 @@ import logo from "../../images/logo_transparent.png";
 
 import styles from "./menu.module.scss";
 import { menuBgIn, menuBgOut } from "./menu.motion";
+import { useToggleBackground } from "./../../hooks/useToggleBackground";
 
 const Menu = () => {
   const [background, setBackground] = useState(false);
-  const { isNavOpen } = useContext(GlobalContext);
+  const { isNavOpen, isContactOpen, toggleContact } = useContext(GlobalContext);
+
+  function handleContact() {
+    if (!isContactOpen) {
+      toggleContact();
+    }
+  }
 
   // check if the menu is at the top of the page
   const handleScrollMenu = useCallback(
@@ -36,14 +43,7 @@ const Menu = () => {
     };
   }, [handleScrollMenu]);
 
-  // changes the background of the menu when the user scrolls
-  useEffect(() => {
-    if (!isNavOpen && background) {
-      menuBgIn();
-    } else {
-      menuBgOut();
-    }
-  }, [background, isNavOpen]);
+  useToggleBackground({ isNavOpen, background, menuBgIn, menuBgOut });
 
   return (
     <>
@@ -63,9 +63,9 @@ const Menu = () => {
           <div className={styles.menuBarBg} />
           <div className={styles.menuButtons}>
             <ul className={styles.menuList}>
-              <Link to={"/"}>
-                <li className={styles.menuButton}>Contacto</li>
-              </Link>
+              <li className={styles.menuButton} onClick={handleContact}>
+                Contacto
+              </li>
               <Link to={"/"}>
                 <li className={styles.menuButton}>Reservas</li>
               </Link>
