@@ -37,7 +37,7 @@ const Contacto = () => {
           <p>
             <strong>Escribenos</strong>
             <br />
-            <a href="/">mail@aurora.com</a>
+            <a href="/">contacto@aurora.com</a>
             <br />
             <a href="/">+34 3094056789</a>
           </p>

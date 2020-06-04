@@ -18,6 +18,13 @@ const Nav = () => {
   const [exit, setExit] = useState(true);
 
   useEffect(() => {
+    document.body.style.overflowY = "hidden";
+    return () => {
+      document.body.style.overflowY = "visible";
+    };
+  });
+
+  useEffect(() => {
     const removeHistoryListener = history.listen((location) => {
       // turn off exit animation when  the path changes to /rooms
       if (location.pathname === "/rooms") {

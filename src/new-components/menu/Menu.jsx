@@ -1,49 +1,30 @@
-import React, { useState, useEffect, useCallback, useContext } from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AiOutlineInstagram } from "react-icons/ai";
 
 import { GlobalContext } from "../../context/global.context";
+
+import { useToggleBackground } from "./../../hooks/useToggleBackground";
+import { useIsScrollToTop } from "./../../hooks/useIsScrollToTop";
 
 import BurgerBtn from "../burger-btn/BurgerBtn";
 import logo from "../../images/logo_transparent.png";
 
 import styles from "./menu.module.scss";
 import { menuBgIn, menuBgOut } from "./menu.motion";
-import { useToggleBackground } from "./../../hooks/useToggleBackground";
 
 const Menu = () => {
-  const [background, setBackground] = useState(false);
   const { isNavOpen, isContactOpen, toggleContact } = useContext(GlobalContext);
+
+  const [isScrollToTop] = useIsScrollToTop();
+
+  useToggleBackground({ isNavOpen, isScrollToTop, menuBgIn, menuBgOut });
 
   function handleContact() {
     if (!isContactOpen) {
       toggleContact();
     }
   }
-
-  // check if the menu is at the top of the page
-  const handleScrollMenu = useCallback(
-    (e) => {
-      let scrolled = document.scrollingElement.scrollTop;
-      if (scrolled > 100 && !background) {
-        setBackground(true);
-      }
-      if (scrolled < 100 && background) {
-        setBackground(false);
-      }
-    },
-    [background]
-  );
-
-  // add eventlistener when component did mount
-  useEffect(() => {
-    document.addEventListener("scroll", handleScrollMenu);
-    return () => {
-      document.removeEventListener("scroll", handleScrollMenu);
-    };
-  }, [handleScrollMenu]);
-
-  useToggleBackground({ isNavOpen, background, menuBgIn, menuBgOut });
 
   return (
     <>

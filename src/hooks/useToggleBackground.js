@@ -1,16 +1,17 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 
 export const useToggleBackground = ({
   isNavOpen,
-  background,
+  isScrollToTop,
   menuBgIn,
   menuBgOut,
 }) => {
   useEffect(() => {
-    if (!isNavOpen && background) {
+    if (!isNavOpen && isScrollToTop) {
       menuBgIn();
     } else {
       menuBgOut();
     }
-  }, [background, isNavOpen]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isScrollToTop, isNavOpen]);
 };
