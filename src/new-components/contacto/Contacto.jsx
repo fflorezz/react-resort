@@ -1,7 +1,9 @@
-import React, { useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import { motion } from "framer-motion";
 
 import { GlobalContext } from "./../../context/global.context";
+
+import { useBodyOverFlowHidden } from "./../../hooks/useBodyOverFlowHidden";
 
 import styles from "./contacto.module.scss";
 import ButtonClose from "./../button-close/ButtonClose";
@@ -9,18 +11,13 @@ import ButtonClose from "./../button-close/ButtonClose";
 const Contacto = () => {
   const { isContactOpen, toggleContact } = useContext(GlobalContext);
 
+  useBodyOverFlowHidden();
+
   function handleContact() {
     if (isContactOpen) {
       toggleContact();
     }
   }
-
-  useEffect(() => {
-    document.body.style.overflowY = "hidden";
-    return () => {
-      document.body.style.overflowY = "visible";
-    };
-  });
 
   return (
     <motion.div

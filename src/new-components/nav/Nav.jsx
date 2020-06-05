@@ -1,9 +1,12 @@
-import React, { useContext, useEffect, useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import React, { useContext, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { HashLink } from "react-router-hash-link";
 
 import { GlobalContext } from "../../context/global.context";
+
+import { usePathChange } from "./../../hooks/usePathChange";
+import { useBodyOverFlowHidden } from "../../hooks/useBodyOverFlowHidden";
 
 import logo from "../../images/logo_transparent_white.png";
 import heroImg from "../../images/hero-web.jpg";
@@ -13,53 +16,35 @@ import { navAnimation } from "./nav.motion";
 
 const Nav = () => {
   const { isNavOpen, toggleNav } = useContext(GlobalContext);
-  const history = useHistory();
+  const [isPathChange, isPathMatching] = usePathChange("/rooms");
 
-  const [exit, setExit] = useState(true);
-
-  useEffect(() => {
-    document.body.style.overflowY = "hidden";
-    return () => {
-      document.body.style.overflowY = "visible";
-    };
-  });
-
-  useEffect(() => {
-    const removeHistoryListener = history.listen((location) => {
-      // turn off exit animation when  the path changes to /rooms
-      if (location.pathname === "/rooms") {
-        setExit(false);
-        // Wait until room's animation end and then close nav
-        setTimeout(() => {
-          toggleNav();
-        }, 900);
-        return;
-      }
-      // close nav when the route changes
-      if (isNavOpen) {
-        toggleNav();
-      }
-    });
-
-    return () => {
-      // Remove history listener
-      removeHistoryListener();
-    };
-  });
+  useBodyOverFlowHidden();
 
   useEffect(() => {
     navAnimation();
   }, []);
 
+  useEffect(() => {
+    if (isPathMatching && isNavOpen) {
+      setTimeout(() => {
+        toggleNav();
+      }, 900);
+    }
+
+    if (isPathChange && isNavOpen) {
+      toggleNav();
+    }
+  }, [isPathChange, isPathMatching, isNavOpen, toggleNav]);
+
   return (
     <motion.nav
       key="modal"
-      exit={exit ? { y: "100%", opacity: 1 } : { y: 0 }}
+      exit={isPathMatching ? { y: 0 } : { y: "100%", opacity: 1 }}
       transition={{ duration: 0.6, ease: "easeInOut" }}
       className={styles.nav}
     >
       <motion.div
-        exit={exit ? { y: "-100%", opacity: 1 } : { y: 0 }}
+        exit={isPathMatching ? { y: 0 } : { y: "-100%", opacity: 1 }}
         transition={{ duration: 0.6, ease: "easeInOut" }}
         className={styles.navMask}
       >
