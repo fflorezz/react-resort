@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+
+import { GlobalContext } from "./../../context/global.context";
 
 import styles from "./formReservas.module.scss";
 import { dateFormater } from "./../../utils";
 
 const FormReservas = () => {
+  const { setReservaInfo } = useContext(GlobalContext);
+
   const TODAY = dateFormater(new Date());
 
   const [state, setState] = useState({
@@ -30,6 +34,7 @@ const FormReservas = () => {
   function handleSubmit(e) {
     e.preventDefault();
     console.log(state);
+    setReservaInfo(state);
   }
 
   return (

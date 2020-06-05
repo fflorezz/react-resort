@@ -1,17 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
+
+import { GlobalContext } from "./../../context/global.context";
 
 import HeaderReservas from "./../../new-components/header-reservas/HeaderReservas";
-
-import ModalAnimation from "./../../new-components/modal-animation/ModalAnimation";
 import FormReservas from "./../../new-components/form-reservas/FormReservas";
-
-// import styles from "./reservas.module.scss";
+import ModalAnimation from "./../../new-components/modal-animation/ModalAnimation";
+import ModalReserva from "./../../new-components/modal-reserva/ModalReserva";
 
 const Reservas = () => {
+  const { isReservaOpen } = useContext(GlobalContext);
+
   return (
     <ModalAnimation>
       <HeaderReservas />
       <FormReservas />
+      {isReservaOpen && <ModalReserva />}
     </ModalAnimation>
   );
 };

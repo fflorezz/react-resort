@@ -6,7 +6,9 @@ export const GlobalProvider = ({ children }) => {
   const [state, setState] = useState({
     isNavOpen: false,
     isContactOpen: false,
+    isReservaOpen: false,
     intro: true,
+    reserva: {},
   });
 
   function toggleNav() {
@@ -23,6 +25,13 @@ export const GlobalProvider = ({ children }) => {
     });
   }
 
+  function toggleReserva() {
+    setState({
+      ...state,
+      isReservaOpen: !state.isReservaOpen,
+    });
+  }
+
   function turnofIntro() {
     setState({
       ...state,
@@ -30,9 +39,25 @@ export const GlobalProvider = ({ children }) => {
     });
   }
 
+  function setReservaInfo(reserva) {
+    setState({
+      ...state,
+      reserva: reserva,
+    });
+
+    toggleReserva();
+  }
+
   return (
     <GlobalContext.Provider
-      value={{ ...state, toggleNav, toggleContact, turnofIntro }}
+      value={{
+        ...state,
+        toggleNav,
+        toggleContact,
+        toggleReserva,
+        turnofIntro,
+        setReservaInfo,
+      }}
     >
       {children}
     </GlobalContext.Provider>
