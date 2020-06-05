@@ -16,11 +16,18 @@
     background: #fff;
     position: absolute;
     transform: translate(-50%, -50%);
+    color: $color-black;
+    @include atSmall {
+      width: 83.33vw;
+      padding: 13.333vw 0;
+    }
   }
-
   .modalText {
     padding: 5.556vw 0;
     margin: 0 12.153vw;
+    @include atSmall {
+      padding: 0;
+    }
     &::before {
       top: 0;
       left: 0;
@@ -32,6 +39,9 @@
       background-size: 55vw;
       background-repeat: repeat;
       background-color: $color-primary;
+      @include atSmall {
+        width: 1vw;
+      }
     }
   }
   h2 {
@@ -39,16 +49,29 @@
     font-size: 3.472vw;
     font-weight: 400;
     letter-spacing: -0.061vw;
+    @include atSmall {
+      font-size: 7vw;
+      margin-bottom: 8vw;
+    }
   }
   p {
     margin-bottom: 1.4vw;
     font-weight: 300;
-    font-size: 1.2vw;
+    font-size: 1.1vw;
     line-height: 1.875vw;
     letter-spacing: 0.05vw;
+    @include atSmall {
+      font-size: 4vw;
+      line-height: 6.4vw;
+      margin-bottom: 6vw;
+    }
   }
   strong {
     font-weight: 600;
+    @include atSmall {
+      font-size: 4vw;
+      line-height: 6.4vw;
+    }
   }
   a {
     color: $color-primary;
@@ -57,5 +80,9 @@
     font-size: 1.042vw;
     line-height: 1.875vw;
     letter-spacing: 0.05vw;
+    @include atSmall {
+      font-size: 4vw;
+      line-height: 6.4vw;
+    }
   }
 }

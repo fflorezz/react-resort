@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 
 import styles from "./singleRoom.module.scss";
 import ButtonClose from "./../button-close/ButtonClose";
@@ -58,7 +58,9 @@ const SingleRoomPage = ({ room }) => {
             <li key={idx}>{item}</li>
           ))}
         </ul>
-        <button className={styles.btnReserve}>Reservar</button>
+        <Link to="/reservas">
+          <button className={styles.btnReserve}>Reservar</button>
+        </Link>
       </section>
     </div>
   );

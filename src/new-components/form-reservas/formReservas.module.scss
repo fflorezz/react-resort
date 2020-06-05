@@ -1,0 +1,51 @@
+@import "../../base-scss/abstracts";
+
+.container {
+  margin: 4vw 6vw;
+  h1 {
+    font-size: 3vw;
+    font-weight: 600;
+  }
+  form {
+    width: 80vw;
+    margin-top: 4vw;
+    display: flex;
+    flex-direction: column;
+
+    //border: 1px solid red;
+  }
+  .field {
+    width: 45%;
+    margin-bottom: 2vw;
+    display: flex;
+    flex-direction: column;
+    input,
+    select {
+      height: 3vw;
+    }
+  }
+  .btn {
+    margin-top: 2vw;
+    display: block;
+    position: relative;
+    color: #fff;
+    cursor: pointer;
+    width: 12.153vw;
+    height: 3.819vw;
+    background: black;
+    font-weight: 600;
+    font-size: 0.9vw;
+    text-align: center;
+    line-height: 4vw;
+    letter-spacing: 0.208vw;
+    text-transform: uppercase;
+    @include atSmall {
+      right: 0;
+      margin-top: 20vw;
+      height: 13.333vw;
+      width: 100%;
+      font-size: 3vw;
+      position: relative;
+    }
+  }
+}

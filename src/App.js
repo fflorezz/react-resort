@@ -7,6 +7,7 @@ import HomePage from "./pages/home/HomePage";
 import RoomsPage from "./pages/rooms/RoomsPage";
 import SingleRoomPage from "./pages/single-room/SingleRoomPage";
 import ErrorPage from "./pages/ErrorPage";
+import Reservas from "./pages/reservas/Reservas";
 // import Mask from "./new-components/mask/Mask";
 
 import "./App.scss";
@@ -22,6 +23,7 @@ function App() {
           <Route exact path="/" component={HomePage} />
           <Route exact path="/rooms" component={RoomsPage} />
           <Route exact path="/rooms/:slug" component={SingleRoomPage} />
+          <Route exact path="/reservas" component={Reservas} />
           <Route component={ErrorPage} />
         </Switch>
       </AnimatePresence>

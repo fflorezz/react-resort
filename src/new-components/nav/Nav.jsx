@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { HashLink } from "react-router-hash-link";
@@ -15,8 +15,9 @@ import styles from "./nav.module.scss";
 import { navAnimation } from "./nav.motion";
 
 const Nav = () => {
-  const { isNavOpen, toggleNav } = useContext(GlobalContext);
-  const [isPathChange, isPathMatching] = usePathChange("/rooms");
+  const { isNavOpen, toggleNav, toggleContact } = useContext(GlobalContext);
+  const [isPathChange, pathName] = usePathChange();
+  const [exit, setExit] = useState(true);
 
   useBodyOverFlowHidden();
 
@@ -25,26 +26,24 @@ const Nav = () => {
   }, []);
 
   useEffect(() => {
-    if (isPathMatching && isNavOpen) {
-      setTimeout(() => {
-        toggleNav();
-      }, 900);
+    if (pathName === "/rooms" || pathName === "/reservas") {
+      setExit(false);
     }
 
     if (isPathChange && isNavOpen) {
       toggleNav();
     }
-  }, [isPathChange, isPathMatching, isNavOpen, toggleNav]);
+  }, [isPathChange, isNavOpen, toggleNav, pathName]);
 
   return (
     <motion.nav
       key="modal"
-      exit={isPathMatching ? { y: 0 } : { y: "100%", opacity: 1 }}
+      exit={exit ? { y: "100%", opacity: 1 } : { y: 0 }}
       transition={{ duration: 0.6, ease: "easeInOut" }}
       className={styles.nav}
     >
       <motion.div
-        exit={isPathMatching ? { y: 0 } : { y: "-100%", opacity: 1 }}
+        exit={exit ? { y: "-100%", opacity: 1 } : { y: 0 }}
         transition={{ duration: 0.6, ease: "easeInOut" }}
         className={styles.navMask}
       >
@@ -61,10 +60,13 @@ const Nav = () => {
         <div className={styles.navContainer}>
           <ul className={styles.subItems}>
             <li className={styles.subItem}>
-              <Link to="/">Reservas</Link>
+              <Link to="/reservas">Reservas</Link>
             </li>
             <li className={styles.subItem}>
               <Link to="/rooms">Habitaciones</Link>
+            </li>
+            <li onClick={toggleContact} className={styles.subItem}>
+              Contacto
             </li>
           </ul>
           <ul className={styles.navItems}>

@@ -14,17 +14,11 @@ import styles from "./menu.module.scss";
 import { menuBgIn, menuBgOut } from "./menu.motion";
 
 const Menu = () => {
-  const { isNavOpen, isContactOpen, toggleContact } = useContext(GlobalContext);
+  const { isNavOpen, toggleContact } = useContext(GlobalContext);
 
   const [isScrollToTop] = useIsScrollToTop();
 
   useToggleBackground({ isNavOpen, isScrollToTop, menuBgIn, menuBgOut });
-
-  function handleContact() {
-    if (!isContactOpen) {
-      toggleContact();
-    }
-  }
 
   return (
     <>
@@ -44,10 +38,10 @@ const Menu = () => {
           <div className={styles.menuBarBg} />
           <div className={styles.menuButtons}>
             <ul className={styles.menuList}>
-              <li className={styles.menuButton} onClick={handleContact}>
+              <li className={styles.menuButton} onClick={toggleContact}>
                 Contacto
               </li>
-              <Link to={"/"}>
+              <Link to={"/reservas"}>
                 <li className={styles.menuButton}>Reservas</li>
               </Link>
               <Link to="/rooms">

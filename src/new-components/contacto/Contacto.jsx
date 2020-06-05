@@ -29,23 +29,26 @@ const Contacto = () => {
       <div className={styles.modalSmall}>
         <ButtonClose handleClick={handleContact} />
         <section className={styles.modalText}>
-          <h2>Contactanos</h2>
-          <p>Para mas información no dudes en...</p>
+          <h2>Contacto</h2>
+          <p>
+            Para mas información no dudes en contactarnos al email o telefono
+            que aparecen a continuacion.
+          </p>
           <p>
             <strong>Escribenos</strong>
             <br />
-            <a href="/">contacto@aurora.com</a>
+            <a href="mailto:contacto@aurora.com">contacto@aurora.com</a>
             <br />
-            <a href="/">+34 3094056789</a>
+            <a href="tel:+57 1 9274566">+57 1 9274566</a>
           </p>
           <p>
             <strong>Dirección</strong>
             <br />
-            cll
+            Calle 38 No. 29 - 52 Barrio La Soledad
             <br />
-            ciudad
+            Bogotá
             <br />
-            pais
+            Colombia
           </p>
         </section>
       </div>

@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 
 import ModalAnimation from "./../../new-components/modal-animation/ModalAnimation";
 import RoomsContainer from "./../../new-components/rooms-container/RoomsContainer";
@@ -18,7 +18,9 @@ const RoomsPage = () => {
     <ModalAnimation>
       <div className={styles.container}>
         <ButtonClose handleClick={handleBack} />
-        <button className={styles.btnReserve}>Reservar</button>
+        <Link to="/reservas">
+          <button className={styles.btnReserve}>Reservar</button>
+        </Link>
         <div className={styles.hero}>
           <h1 className={styles.heroTitle}>Nuestras Habitaciones</h1>
         </div>
