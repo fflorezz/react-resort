@@ -1,8 +1,6 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { AiOutlineInstagram } from "react-icons/ai";
-
-import { GlobalContext } from "../../context/global.context";
 
 import { useToggleBackground } from "./../../hooks/useToggleBackground";
 import { useIsScrollToTop } from "./../../hooks/useIsScrollToTop";
@@ -10,15 +8,27 @@ import { useIsScrollToTop } from "./../../hooks/useIsScrollToTop";
 import BurgerBtn from "../burger-btn/BurgerBtn";
 import logo from "../../images/logo_transparent.png";
 
+import {
+  useGlobalStateContext,
+  useGlobalDispatchContext,
+} from "../../context/global-context/GlobaContext";
+
+import { toggleContact } from "../../context/global-context/globalActions";
+
 import styles from "./menu.module.scss";
 import { menuBgIn, menuBgOut } from "./menu.motion";
 
 const Menu = () => {
-  const { isNavOpen, toggleContact } = useContext(GlobalContext);
+  const { isNavOpen } = useGlobalStateContext();
+  const dispatch = useGlobalDispatchContext();
 
   const [isScrollToTop] = useIsScrollToTop();
 
   useToggleBackground({ isNavOpen, isScrollToTop, menuBgIn, menuBgOut });
+
+  function handleClick() {
+    dispatch(toggleContact());
+  }
 
   return (
     <>
@@ -38,7 +48,7 @@ const Menu = () => {
           <div className={styles.menuBarBg} />
           <div className={styles.menuButtons}>
             <ul className={styles.menuList}>
-              <li className={styles.menuButton} onClick={toggleContact}>
+              <li className={styles.menuButton} onClick={handleClick}>
                 Contacto
               </li>
               <Link to={"/reservas"}>

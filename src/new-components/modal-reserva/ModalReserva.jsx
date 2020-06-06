@@ -1,18 +1,28 @@
-import React, { useContext } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 
-import { GlobalContext } from "../../context/global.context";
+import {
+  useGlobalDispatchContext,
+  useGlobalStateContext,
+} from "../../context/global-context/GlobaContext";
+
+import { toggleReservation } from "../../context/global-context/globalActions";
 
 import { useBodyOverFlowHidden } from "../../hooks/useBodyOverFlowHidden";
-
-import styles from "./modalReserva.module.scss";
 import ButtonClose from "../button-close/ButtonClose";
 
+import styles from "./modalReserva.module.scss";
+
 const ModalReserva = () => {
-  const { toggleReserva, reserva } = useContext(GlobalContext);
-  const { startDate, endDate, huespedes } = reserva;
+  const dispatch = useGlobalDispatchContext();
+  const { reservationInfo } = useGlobalStateContext();
+  const { startDate, endDate, guests } = reservationInfo;
 
   useBodyOverFlowHidden();
+
+  function handleClick() {
+    dispatch(toggleReservation());
+  }
 
   return (
     <motion.div
@@ -22,7 +32,7 @@ const ModalReserva = () => {
       className={styles.modal}
     >
       <div className={styles.modalSmall}>
-        <ButtonClose handleClick={toggleReserva} />
+        <ButtonClose handleClick={handleClick} />
         <section className={styles.modalText}>
           <h2>Tu reserva ha sido exitosa!</h2>
           <p>
@@ -35,7 +45,7 @@ const ModalReserva = () => {
           </p>
           <p>
             <strong>HUESPEDES: </strong>
-            {huespedes}
+            {guests}
           </p>
         </section>
       </div>

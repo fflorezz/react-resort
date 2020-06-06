@@ -1,19 +1,25 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 
-import { GlobalContext } from "./../../context/global.context";
+import { useGlobalDispatchContext } from "./../../context/global-context/GlobaContext";
 
-import styles from "./formReservas.module.scss";
+import {
+  saveReservation,
+  toggleReservation,
+  saveReservationSucces,
+} from "../../context/global-context/globalActions";
+
 import { dateFormater } from "./../../utils";
 
+import styles from "./formReservas.module.scss";
+
 const FormReservas = () => {
-  const { setReservaInfo } = useContext(GlobalContext);
+  const dispatch = useGlobalDispatchContext();
 
   const TODAY = dateFormater(new Date());
-
   const [state, setState] = useState({
     startDate: TODAY,
     endDate: TODAY,
-    huespedes: 1,
+    guests: 1,
   });
 
   function handleStartDate({ target: { value } }) {
@@ -33,8 +39,13 @@ const FormReservas = () => {
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(state);
-    setReservaInfo(state);
+    dispatch(saveReservation());
+
+    //fake upload
+    setTimeout(() => {
+      dispatch(saveReservationSucces(state));
+      dispatch(toggleReservation());
+    }, 3000);
   }
 
   return (
@@ -62,11 +73,11 @@ const FormReservas = () => {
           />
         </div>
         <div className={styles.field}>
-          <label htmlFor="huespedes">Huespedes</label>
+          <label htmlFor="guests">Huespedes</label>
           <select
-            name="huespedes"
-            id="huespedes"
-            value={state.huespedes}
+            name="guests"
+            id="guests"
+            value={state.guests}
             onChange={handleInput}
           >
             {[1, 2, 3, 4, 5, 6, 10].map((item, idx) => (

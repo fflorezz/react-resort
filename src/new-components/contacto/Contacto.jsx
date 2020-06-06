@@ -1,7 +1,9 @@
-import React, { useContext } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 
-import { GlobalContext } from "./../../context/global.context";
+import { useGlobalDispatchContext } from "./../../context/global-context/GlobaContext";
+
+import { toggleContact } from "../../context/global-context/globalActions";
 
 import { useBodyOverFlowHidden } from "./../../hooks/useBodyOverFlowHidden";
 
@@ -9,14 +11,12 @@ import styles from "./contacto.module.scss";
 import ButtonClose from "./../button-close/ButtonClose";
 
 const Contacto = () => {
-  const { isContactOpen, toggleContact } = useContext(GlobalContext);
+  const dispatch = useGlobalDispatchContext();
 
   useBodyOverFlowHidden();
 
   function handleContact() {
-    if (isContactOpen) {
-      toggleContact();
-    }
+    dispatch(toggleContact());
   }
 
   return (

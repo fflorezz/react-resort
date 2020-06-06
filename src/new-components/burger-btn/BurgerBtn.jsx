@@ -1,16 +1,27 @@
-import React, { useContext } from "react";
+import React from "react";
 import { FaAlignRight } from "react-icons/fa";
 import { AiOutlineClose } from "react-icons/ai";
 
+import {
+  useGlobalDispatchContext,
+  useGlobalStateContext,
+} from "./../../context/global-context/GlobaContext";
+
+import { toggleNav } from "./../../context/global-context/globalActions";
+
 import styles from "./burgerBtn.module.scss";
-import { GlobalContext } from "../../context/global.context";
 
 const BurgerBtn = () => {
-  const { isNavOpen, toggleNav } = useContext(GlobalContext);
+  const { isNavOpen } = useGlobalStateContext();
+  const dispatch = useGlobalDispatchContext();
+
+  function handleClick() {
+    dispatch(toggleNav());
+  }
 
   return (
     <button
-      onClick={toggleNav}
+      onClick={handleClick}
       type="button"
       className={
         isNavOpen ? `${styles.burgerBtn} ${styles.isOpen}` : styles.burgerBtn

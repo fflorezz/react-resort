@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 
@@ -6,13 +6,13 @@ import logo from "../../images/logo_transparent_white.png";
 import Menu from "./../menu/Menu";
 import Nav from "./../nav/Nav";
 
-import { GlobalContext } from "../../context/global.context";
+import { useGlobalStateContext } from "../../context/global-context/GlobaContext";
 
 import styles from "./header.module.scss";
 import Contacto from "./../contacto/Contacto";
 
 const Header = () => {
-  const { isNavOpen, isContactOpen } = useContext(GlobalContext);
+  const { isNavOpen, isContactOpen } = useGlobalStateContext();
 
   return (
     <div className={styles.header}>

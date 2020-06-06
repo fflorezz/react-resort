@@ -1,9 +1,17 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { HashLink } from "react-router-hash-link";
 
-import { GlobalContext } from "../../context/global.context";
+import {
+  useGlobalStateContext,
+  useGlobalDispatchContext,
+} from "../../context/global-context/GlobaContext";
+
+import {
+  toggleNav,
+  toggleContact,
+} from "./../../context/global-context/globalActions";
 
 import { usePathChange } from "./../../hooks/usePathChange";
 import { useBodyOverFlowHidden } from "../../hooks/useBodyOverFlowHidden";
@@ -15,8 +23,11 @@ import styles from "./nav.module.scss";
 import { navAnimation } from "./nav.motion";
 
 const Nav = () => {
-  const { isNavOpen, toggleNav, toggleContact } = useContext(GlobalContext);
+  const { isNavOpen } = useGlobalStateContext();
+  const dispatch = useGlobalDispatchContext();
+
   const [isPathChange, pathName] = usePathChange();
+
   const [exit, setExit] = useState(true);
 
   useBodyOverFlowHidden();
@@ -31,9 +42,13 @@ const Nav = () => {
     }
 
     if (isPathChange && isNavOpen) {
-      toggleNav();
+      dispatch(toggleNav());
     }
-  }, [isPathChange, isNavOpen, toggleNav, pathName]);
+  }, [isPathChange, isNavOpen, pathName, dispatch]);
+
+  function handleClick() {
+    dispatch(toggleContact());
+  }
 
   return (
     <motion.nav
@@ -65,7 +80,7 @@ const Nav = () => {
             <li className={styles.subItem}>
               <Link to="/rooms">Habitaciones</Link>
             </li>
-            <li onClick={toggleContact} className={styles.subItem}>
+            <li onClick={handleClick} className={styles.subItem}>
               Contacto
             </li>
           </ul>
