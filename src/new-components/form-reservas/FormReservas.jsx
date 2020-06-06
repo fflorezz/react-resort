@@ -1,6 +1,10 @@
 import React, { useState } from "react";
+import { FaSpinner } from "react-icons/fa";
 
-import { useGlobalDispatchContext } from "./../../context/global-context/GlobaContext";
+import {
+  useGlobalDispatchContext,
+  useGlobalStateContext,
+} from "./../../context/global-context/GlobaContext";
 
 import {
   saveReservation,
@@ -14,6 +18,7 @@ import styles from "./formReservas.module.scss";
 
 const FormReservas = () => {
   const dispatch = useGlobalDispatchContext();
+  const { isSaving } = useGlobalStateContext();
 
   const TODAY = dateFormater(new Date());
   const [state, setState] = useState({
@@ -45,7 +50,7 @@ const FormReservas = () => {
     setTimeout(() => {
       dispatch(saveReservationSucces(state));
       dispatch(toggleReservation());
-    }, 3000);
+    }, 4000);
   }
 
   return (
@@ -87,7 +92,9 @@ const FormReservas = () => {
             ))}
           </select>
         </div>
-        <button className={styles.btn}>Reservar Ahora</button>
+        <button className={styles.btn}>
+          {isSaving ? <FaSpinner /> : "Reservar Ahora"}
+        </button>
       </form>
     </div>
   );

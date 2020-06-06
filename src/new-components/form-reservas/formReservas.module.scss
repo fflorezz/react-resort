@@ -42,6 +42,13 @@
     line-height: 4vw;
     letter-spacing: 0.208vw;
     text-transform: uppercase;
+    svg {
+      width: 2vw;
+      height: 2vw;
+      margin-top: 0.8vw;
+      transform: rotate(90deg);
+      animation: spinner 1s infinite linear;
+    }
     @include atSmall {
       right: 0;
       margin-top: 20vw;
@@ -50,5 +57,14 @@
       font-size: 3vw;
       position: relative;
     }
+  }
+}
+
+@keyframes spinner {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(359deg);
   }
 }
