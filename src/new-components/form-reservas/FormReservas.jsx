@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { FaSpinner } from "react-icons/fa";
 
 import {
@@ -15,40 +15,35 @@ import {
 import { dateFormater } from "./../../utils";
 
 import styles from "./formReservas.module.scss";
+import { useFormvalidation } from "./../../hooks/useFormValidation";
+
+const TODAY = dateFormater(new Date());
+
+const INITIAL_STATE = {
+  name: "",
+  email: "",
+  startDate: TODAY,
+  endDate: TODAY,
+  guests: 1,
+};
 
 const FormReservas = () => {
   const dispatch = useGlobalDispatchContext();
   const { isSaving } = useGlobalStateContext();
+  const {
+    handleChange,
+    values,
+    handleSubmit,
+    handleBlur,
+    errors,
+    isSubmitting,
+  } = useFormvalidation(INITIAL_STATE, fakeUploadReservation);
 
-  const TODAY = dateFormater(new Date());
-  const [state, setState] = useState({
-    startDate: TODAY,
-    endDate: TODAY,
-    guests: 1,
-  });
-
-  function handleStartDate({ target: { value } }) {
-    setState({
-      ...state,
-      startDate: value,
-      endDate: value,
-    });
-  }
-
-  function handleInput({ target: { name, value } }) {
-    setState({
-      ...state,
-      [name]: value,
-    });
-  }
-
-  function handleSubmit(e) {
-    e.preventDefault();
+  function fakeUploadReservation() {
     dispatch(saveReservation());
 
-    //fake upload
     setTimeout(() => {
-      dispatch(saveReservationSucces(state));
+      dispatch(saveReservationSucces(values));
       dispatch(toggleReservation());
     }, 4000);
   }
@@ -58,32 +53,58 @@ const FormReservas = () => {
       <h1>Elige una fecha</h1>
       <form action="" onSubmit={handleSubmit}>
         <div className={styles.field}>
-          <label htmlFor="startDate">Desde el...</label>
+          <label htmlFor="name">Nombre</label>
+          <input
+            type="text"
+            name="name"
+            id="name"
+            value={values.name}
+            onBlur={handleBlur}
+            onChange={handleChange}
+          />
+          {errors.name && <p className={styles.error}>{errors.name}</p>}
+        </div>
+        <div className={styles.field}>
+          <label htmlFor="email">Mail</label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            value={values.email}
+            onBlur={handleBlur}
+            onChange={handleChange}
+          />
+          {errors.email && <p className={styles.error}>{errors.email}</p>}
+        </div>
+        <div className={styles.field}>
+          <label htmlFor="startDate">Chekin</label>
           <input
             type="date"
             name="startDate"
             id="startDate"
-            value={state.startDate}
-            onChange={handleStartDate}
+            value={values.startDate}
+            onChange={handleChange}
           />
         </div>
         <div className={styles.field}>
-          <label htmlFor="endDate">Hasta el...</label>
+          <label htmlFor="endDate">Checkout</label>
           <input
             type="date"
             name="endDate"
             id="endDate"
-            value={state.endDate}
-            onChange={handleInput}
+            value={values.endDate}
+            onBlur={handleBlur}
+            onChange={handleChange}
           />
+          {errors.endDate && <p className={styles.error}>{errors.endDate}</p>}
         </div>
         <div className={styles.field}>
           <label htmlFor="guests">Huespedes</label>
           <select
             name="guests"
             id="guests"
-            value={state.guests}
-            onChange={handleInput}
+            value={values.guests}
+            onChange={handleChange}
           >
             {[1, 2, 3, 4, 5, 6, 10].map((item, idx) => (
               <option key={idx} value={item}>
@@ -92,7 +113,7 @@ const FormReservas = () => {
             ))}
           </select>
         </div>
-        <button className={styles.btn}>
+        <button disabled={isSubmitting} className={styles.btn}>
           {isSaving ? <FaSpinner /> : "Reservar Ahora"}
         </button>
       </form>

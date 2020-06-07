@@ -16,7 +16,7 @@ import styles from "./modalReserva.module.scss";
 const ModalReserva = () => {
   const dispatch = useGlobalDispatchContext();
   const { reservationInfo } = useGlobalStateContext();
-  const { startDate, endDate, guests } = reservationInfo;
+  const { startDate, endDate, guests, name, email } = reservationInfo;
 
   useBodyOverFlowHidden();
 
@@ -36,6 +36,10 @@ const ModalReserva = () => {
         <section className={styles.modalText}>
           <h2>Tu reserva ha sido exitosa!</h2>
           <p>
+            <strong>NOMBRE: </strong>
+            {name.toUpperCase()}
+          </p>
+          <p>
             <strong>CHECKIN: </strong>
             {startDate}
           </p>
@@ -46,6 +50,11 @@ const ModalReserva = () => {
           <p>
             <strong>HUESPEDES: </strong>
             {guests}
+          </p>
+          <p>
+            Enviamos la confirmacion de tu reserva al siguiente email:
+            <br />
+            <strong>{email}</strong>
           </p>
         </section>
       </div>
