@@ -2,29 +2,42 @@
 
 .container {
   margin: 4vw 10vw;
+  @include atSmall {
+    margin: 12vw 8vw;
+  }
   h1 {
     font-size: 3vw;
     font-weight: 600;
+    @include atSmall {
+      font-size: 6vw;
+      margin-bottom: 8vw;
+    }
   }
   form {
-    width: 80vw;
+    width: 100%;
     margin-top: 4vw;
     display: flex;
     flex-direction: column;
-
-    //border: 1px solid red;
   }
   .field {
     width: 45%;
     margin-bottom: 2vw;
     display: flex;
     flex-direction: column;
+    @include atSmall {
+      width: 100%;
+      margin-bottom: 8vw;
+    }
     label {
       margin-bottom: 0.5vw;
     }
     input,
     select {
       height: 3vw;
+      @include atSmall {
+        height: 8vw;
+        width: 100%;
+      }
     }
   }
   .btn {
@@ -46,16 +59,20 @@
       width: 2vw;
       height: 2vw;
       margin-top: 0.8vw;
-      transform: rotate(90deg);
       animation: spinner 1s infinite linear;
     }
     @include atSmall {
       right: 0;
-      margin-top: 20vw;
+      margin-top: 10vw;
       height: 13.333vw;
       width: 100%;
       font-size: 3vw;
       position: relative;
+      svg {
+        width: 6vw;
+        height: 6vw;
+        margin-top: 0.8vw;
+      }
     }
   }
 }

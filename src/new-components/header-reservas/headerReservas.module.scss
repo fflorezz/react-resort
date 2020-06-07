@@ -7,6 +7,9 @@
   align-items: center;
   justify-content: flex-start;
   box-shadow: rgba(0, 0, 0, 0.8) 0px 0px 12px -8px;
+  @include atSmall {
+    padding: 5vw 8vw 8vw;
+  }
 }
 
 .logo {
@@ -18,6 +21,9 @@
     height: 100%;
     filter: brightness(0.1);
   }
+  @include atSmall {
+    display: none;
+  }
 }
 
 .text {
@@ -26,10 +32,14 @@
     margin-top: 0;
     margin-bottom: 0.5vw;
     border-bottom: 1px solid rgb(211, 211, 211);
+    @include atSmall {
+      font-size: 8vw;
+    }
   }
   .info {
     display: flex;
     flex-direction: column;
+
     .field {
       display: flex;
       align-items: flex-start;
@@ -40,6 +50,16 @@
       }
       p {
         font-size: 0.8vw;
+      }
+    }
+    @include atSmall {
+      .field {
+        svg {
+          margin-top: 1vw;
+        }
+        p {
+          font-size: 2vw;
+        }
       }
     }
   }
