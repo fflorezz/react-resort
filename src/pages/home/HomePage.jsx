@@ -13,6 +13,7 @@ import Spinner from "./../../new-components/spinner/Spinner";
 
 import { text } from "./../../text";
 import imgMar from "../../images/mar/mar-01.jpg";
+import SmoothScroll from "./../../new-components/smooth-scroll/SmothScroll";
 
 const HomePage = () => {
   const { featuredRooms, fetching } = useRoomsStateContext();
@@ -24,19 +25,21 @@ const HomePage = () => {
       exit={{ opacity: 1 }}
       transition={{ duration: 1, ease: "easeInOut" }}
     >
-      <Hero />
-      <Section id="bar">
-        <Heading text={text.headingBar} />
-        <Slider />
-      </Section>
-      <Section id="mar" row={true}>
-        <Heading text={text.headingMar} />
-        <ImageAnimation width="100%" src={imgMar} />
-      </Section>
-      <Section id="destacadas">
-        <Heading text={text.headingDestacadas} />
-        {fetching ? <Spinner /> : <Slider2 rooms={featuredRooms} />}
-      </Section>
+      <SmoothScroll>
+        <Hero />
+        <Section id="bar">
+          <Heading text={text.headingBar} />
+          <Slider />
+        </Section>
+        <Section id="mar" row={true}>
+          <Heading text={text.headingMar} />
+          <ImageAnimation width="100%" src={imgMar} />
+        </Section>
+        <Section id="destacadas">
+          <Heading text={text.headingDestacadas} />
+          {fetching ? <Spinner /> : <Slider2 rooms={featuredRooms} />}
+        </Section>
+      </SmoothScroll>
     </motion.div>
   );
 };

@@ -18,6 +18,7 @@ const INITIAL_STATE = {
   maxPrice: 0,
   minSize: 0,
   maxSize: 0,
+  options: { type: [], capacity: [] },
 };
 
 export const RoomsContextProvider = ({ children }) => {

@@ -101,23 +101,6 @@ const Nav = () => {
               </HashLink>
             </li>
           </ul>
-          <ul className={styles.contactItems}>
-            <li className={styles.contactItem}>
-              <a href="/">
-                <span>contacto</span>
-              </a>
-            </li>
-            <li className={styles.contactItem}>
-              <a href="/">
-                <span>contacto</span>
-              </a>
-            </li>
-            <li className={styles.contactItem}>
-              <a href="/">
-                <span>contacto</span>
-              </a>
-            </li>
-          </ul>
         </div>
         <div className={styles.navImage}>
           <img src={heroImg} alt="" />
