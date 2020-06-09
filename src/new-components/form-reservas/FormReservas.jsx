@@ -37,14 +37,14 @@ const FormReservas = () => {
     handleBlur,
     errors,
     isSubmitting,
-  } = useFormvalidation(INITIAL_STATE, fakeUploadReservation);
+  } = useFormvalidation(INITIAL_STATE, uploadReservation);
 
-  function fakeUploadReservation() {
+  function uploadReservation(resetInputs) {
     dispatch(saveReservation());
-
     setTimeout(() => {
       dispatch(saveReservationSucces(values));
       dispatch(toggleReservation());
+      resetInputs();
     }, 4000);
   }
 

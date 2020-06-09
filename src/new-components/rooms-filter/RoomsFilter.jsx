@@ -1,5 +1,9 @@
-import React, { useContext, useState, useEffect } from "react";
-import { RoomContext } from "../../context/room.context";
+import React, { useState, useEffect } from "react";
+
+import { useRoomsStateContext } from "../../context/roomsContex/RoomsContext";
+import { useRoomsDispatchContext } from "./../../context/roomsContex/RoomsContext";
+
+import { filterRooms } from "./../../context/roomsContex/roomsActions";
 
 import styles from "./roomsFilter.module.scss";
 
@@ -10,8 +14,9 @@ const RoomsFilter = () => {
     minSize,
     maxSize,
     options,
-    filterRooms,
-  } = useContext(RoomContext);
+  } = useRoomsStateContext();
+
+  const dispatch = useRoomsDispatchContext();
 
   const [state, setState] = useState({
     type: "todas",
@@ -26,7 +31,7 @@ const RoomsFilter = () => {
   });
 
   useEffect(() => {
-    filterRooms(state);
+    dispatch(filterRooms(state));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state]);
 

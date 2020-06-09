@@ -6,7 +6,7 @@ import {
   SAVE_RESERVATION_SUCCES,
 } from "./globalTypes";
 
-export const globalReduer = (state, action) => {
+export const globalReducer = (state, action) => {
   switch (action.type) {
     case TOGGLE_NAV:
       return {

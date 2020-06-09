@@ -1,6 +1,6 @@
 import React, { createContext, useReducer, useContext } from "react";
 
-import { globalReduer } from "./globalReducer";
+import { globalReducer } from "./globalReducer";
 
 export const GlobalStateContext = createContext();
 export const GlobalDispatchContext = createContext();
@@ -14,7 +14,7 @@ const INITIAL_STATE = {
 };
 
 export const GlobaContextProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(globalReduer, INITIAL_STATE);
+  const [state, dispatch] = useReducer(globalReducer, INITIAL_STATE);
 
   return (
     <GlobalDispatchContext.Provider value={dispatch}>
@@ -26,9 +26,21 @@ export const GlobaContextProvider = ({ children }) => {
 };
 
 export const useGlobalStateContext = () => {
-  return useContext(GlobalStateContext);
+  const context = useContext(GlobalStateContext);
+  if (context === undefined) {
+    throw new Error(
+      "useGlobalStateContext must be used within a GlobalStateProvider"
+    );
+  }
+  return context;
 };
 
 export const useGlobalDispatchContext = () => {
-  return useContext(GlobalDispatchContext);
+  const context = useContext(GlobalDispatchContext);
+  if (context === undefined) {
+    throw new Error(
+      "useGlobalDispatchContext must be used within a GlobalDispatchProvider"
+    );
+  }
+  return context;
 };

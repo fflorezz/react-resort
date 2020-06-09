@@ -1,7 +1,5 @@
-import React, { useContext } from "react";
+import React from "react";
 import { motion } from "framer-motion";
-
-import { RoomContext } from "./../../context/room.context";
 
 import Hero from "./../../new-components/hero/Hero";
 import Section from "../../new-components/section/Section";
@@ -13,9 +11,10 @@ import Loading from "./../../components/Loading";
 
 import { text } from "./../../text";
 import imgMar from "../../images/mar/mar-01.jpg";
+import { useRoomsStateContext } from "../../context/roomsContex/RoomsContext";
 
 const HomePage = () => {
-  const { featuredRooms, loading } = useContext(RoomContext);
+  const { featuredRooms, fetching } = useRoomsStateContext();
 
   return (
     <motion.div
@@ -35,7 +34,7 @@ const HomePage = () => {
       </Section>
       <Section id="destacadas">
         <Heading text={text.headingDestacadas} />
-        {loading ? <Loading /> : <Slider2 rooms={featuredRooms} />}
+        {fetching ? <Loading /> : <Slider2 rooms={featuredRooms} />}
       </Section>
     </motion.div>
   );

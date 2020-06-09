@@ -1,18 +1,16 @@
-import React, { useContext } from "react";
-
-import { RoomContext } from "./../../context/room.context";
+import React from "react";
 
 import Loading from "./../../components/Loading";
 import RoomsFilter from "./../../new-components/rooms-filter/RoomsFilter";
 import RoomsList from "../../new-components/room-list/RoomList";
+import { useRoomsStateContext } from "../../context/roomsContex/RoomsContext";
 
 const RoomsContainer = () => {
-  const state = useContext(RoomContext);
-  const { loading, sortedRooms } = state;
+  const { fetching, sortedRooms } = useRoomsStateContext();
 
   return (
     <div>
-      {loading ? (
+      {fetching ? (
         <Loading />
       ) : (
         <>

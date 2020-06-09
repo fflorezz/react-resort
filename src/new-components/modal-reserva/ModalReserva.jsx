@@ -12,16 +12,19 @@ import { useBodyOverFlowHidden } from "../../hooks/useBodyOverFlowHidden";
 import ButtonClose from "../button-close/ButtonClose";
 
 import styles from "./modalReserva.module.scss";
+import { useHistory } from "react-router-dom";
 
 const ModalReserva = () => {
   const dispatch = useGlobalDispatchContext();
   const { reservationInfo } = useGlobalStateContext();
   const { startDate, endDate, guests, name, email } = reservationInfo;
+  const history = useHistory();
 
   useBodyOverFlowHidden();
 
   function handleClick() {
     dispatch(toggleReservation());
+    history.push("/");
   }
 
   return (

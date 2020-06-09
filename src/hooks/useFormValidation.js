@@ -15,7 +15,7 @@ const validate = (values) => {
   }
 
   if (values.startDate === values.endDate) {
-    errors.endDate = "debe ser una fecha dirente al checkin";
+    errors.endDate = "elige una fecha diferente al checkin";
   }
   return errors;
 };
@@ -29,8 +29,10 @@ export const useFormvalidation = (initialState, uploadReservation) => {
     if (isSubmitting) {
       const noErrors = Object.keys(errors).length === 0;
       if (noErrors) {
-        uploadReservation();
-        setValues(initialState);
+        const resetInputs = () => {
+          setValues(initialState);
+        };
+        uploadReservation(resetInputs);
         setSubmitting(false);
       } else {
         setSubmitting(false);

@@ -26,12 +26,15 @@
     flex-direction: column;
     @include atSmall {
       width: 100%;
-      margin-bottom: 8vw;
+      margin-bottom: 6vw;
     }
     label {
       margin-bottom: 0.5vw;
       font-size: 1vw;
       font-weight: 600;
+      @include atSmall {
+        font-size: 4vw;
+      }
     }
     input,
     select {
@@ -80,6 +83,9 @@
   .error {
     font-size: 1vw;
     color: $color-primary;
+    @include atSmall {
+      font-size: 4vw;
+    }
   }
 }
 

@@ -1,0 +1,4 @@
+export const FETCH_DATA = "FETCH_DATA";
+export const FETCH_DATA_SUCCES = "FETCH_DATA_SUCCES";
+export const FETCH_DATA_FAILURE = "FETCH_DATA_FAILURE";
+export const FILTER_ROOMS = "FILTER_ROOMS";
