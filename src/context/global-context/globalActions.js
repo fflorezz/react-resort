@@ -4,6 +4,7 @@ import {
   TOGGLE_RESERVATION,
   SAVE_RESERVATION,
   SAVE_RESERVATION_SUCCES,
+  DISABLE_HOME_ANIMATIONS,
 } from "./globalTypes";
 
 export const toggleNav = () => ({
@@ -26,5 +27,11 @@ export const saveReservationSucces = (reservation) => {
   return {
     type: SAVE_RESERVATION_SUCCES,
     payload: reservation,
+  };
+};
+
+export const disableHomeAnimations = () => {
+  return {
+    type: DISABLE_HOME_ANIMATIONS,
   };
 };

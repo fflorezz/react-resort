@@ -10,6 +10,7 @@ const INITIAL_STATE = {
   isContactOpen: false,
   isReservationOpen: false,
   isSaving: false,
+  homeAnimations: false,
   reservationInfo: null,
 };
 

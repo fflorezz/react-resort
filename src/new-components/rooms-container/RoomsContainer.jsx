@@ -1,9 +1,10 @@
 import React from "react";
 
-import Loading from "./../../components/Loading";
+import { useRoomsStateContext } from "../../context/roomsContex/RoomsContext";
+
 import RoomsFilter from "./../../new-components/rooms-filter/RoomsFilter";
 import RoomsList from "../../new-components/room-list/RoomList";
-import { useRoomsStateContext } from "../../context/roomsContex/RoomsContext";
+import Spinner from "./../spinner/Spinner";
 
 const RoomsContainer = () => {
   const { fetching, sortedRooms } = useRoomsStateContext();
@@ -11,7 +12,7 @@ const RoomsContainer = () => {
   return (
     <div>
       {fetching ? (
-        <Loading />
+        <Spinner />
       ) : (
         <>
           <RoomsFilter />

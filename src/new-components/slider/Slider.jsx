@@ -2,6 +2,8 @@ import React, { useRef, useState, useEffect } from "react";
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 import { gsap } from "gsap";
 
+import { useGlobalStateContext } from "../../context/global-context/GlobaContext";
+
 import { useOnScreen } from "./../../hooks/useOnScreen";
 import { images } from "./../../images/bar/imagesBar";
 
@@ -9,13 +11,16 @@ import { sliderIn, sliderOut } from "./slider.motion";
 import styles from "./slider.module.scss";
 
 const Slider = () => {
+  const { homeAnimations } = useGlobalStateContext();
   // on screen component transition
   const [maskRef, visible] = useOnScreen(0.1);
   const sliderRef = useRef(null);
 
   useEffect(() => {
-    visible ? sliderIn(sliderRef) : sliderOut(sliderRef);
-  }, [visible, maskRef]);
+    if (homeAnimations) {
+      visible ? sliderIn(sliderRef) : sliderOut(sliderRef);
+    }
+  }, [visible, maskRef, homeAnimations]);
 
   // slides transition
   const [current, setCurrent] = useState(0);

@@ -12,7 +12,7 @@ import {
   saveReservationSucces,
 } from "../../context/global-context/globalActions";
 
-import { dateFormater } from "./../../utils";
+import { dateFormater } from "../../utils/dateFormater";
 
 import styles from "./formReservas.module.scss";
 import { useFormvalidation } from "./../../hooks/useFormValidation";

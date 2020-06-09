@@ -4,6 +4,7 @@ import {
   TOGGLE_CONTACT,
   SAVE_RESERVATION,
   SAVE_RESERVATION_SUCCES,
+  DISABLE_HOME_ANIMATIONS,
 } from "./globalTypes";
 
 export const globalReducer = (state, action) => {
@@ -33,6 +34,11 @@ export const globalReducer = (state, action) => {
         ...state,
         reservationInfo: action.payload,
         isSaving: false,
+      };
+    case DISABLE_HOME_ANIMATIONS:
+      return {
+        ...state,
+        homeAnimations: false,
       };
 
     default:

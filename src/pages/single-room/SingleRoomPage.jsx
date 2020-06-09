@@ -1,9 +1,10 @@
 import React from "react";
 
-import SingleRoom from "./../../new-components/SingleRoom/SingleRoom";
-import Loading from "./../../components/Loading";
-import ModalAnimation from "./../../new-components/modal-animation/ModalAnimation";
 import { useRoomsStateContext } from "../../context/roomsContex/RoomsContext";
+
+import SingleRoom from "./../../new-components/SingleRoom/SingleRoom";
+import ModalAnimation from "./../../new-components/modal-animation/ModalAnimation";
+import Spinner from "./../../new-components/spinner/Spinner";
 
 const SingleRoomPage = ({ match }) => {
   const { getRoom, fetching } = useRoomsStateContext();
@@ -13,7 +14,7 @@ const SingleRoomPage = ({ match }) => {
   return (
     <ModalAnimation>
       {fetching ? (
-        <Loading />
+        <Spinner />
       ) : room ? (
         <SingleRoom room={room} />
       ) : (

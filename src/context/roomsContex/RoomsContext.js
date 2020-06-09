@@ -3,7 +3,7 @@ import React, { createContext, useReducer, useContext, useEffect } from "react";
 import Client from "../../contentful";
 
 import { roomsReducer } from "./roomsReducer";
-import { fetchData } from "./../utils";
+import { fetchData } from "../../utils/fetchData";
 
 export const RoomsStateContext = createContext();
 export const RoomsDispatchContext = createContext();

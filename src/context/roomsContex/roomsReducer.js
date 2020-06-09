@@ -5,7 +5,7 @@ import {
   FILTER_ROOMS,
 } from "./roomsTypes";
 
-import { filterRooms } from "../utils";
+import { filterRooms } from "../../utils/filterRooms";
 
 export const roomsReducer = (state, action) => {
   switch (action.type) {

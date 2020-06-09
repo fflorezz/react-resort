@@ -1,5 +1,7 @@
 import React, { useEffect, useRef } from "react";
 
+import { useGlobalStateContext } from "../../context/global-context/GlobaContext";
+
 import { useOnScreen } from "../../hooks/useOnScreen";
 
 import styles from "./heading.module.scss";
@@ -7,6 +9,7 @@ import { headingAnimation, headingAnimationOut } from "./heading.motion";
 
 const Heading = ({ text }) => {
   const [headingRef, visible] = useOnScreen(0.1);
+  const { homeAnimations } = useGlobalStateContext();
 
   const ref = {
     line1: useRef(null),
@@ -15,8 +18,10 @@ const Heading = ({ text }) => {
   };
 
   useEffect(() => {
-    visible ? headingAnimation(ref) : headingAnimationOut(ref);
-  }, [visible, ref]);
+    if (homeAnimations) {
+      visible ? headingAnimation(ref) : headingAnimationOut(ref);
+    }
+  }, [visible, ref, homeAnimations]);
 
   return (
     <div ref={headingRef} className={styles.heading}>
