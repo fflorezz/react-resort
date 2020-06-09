@@ -8,6 +8,8 @@ class SmoothScroll extends React.Component {
     height: window.innerHeight,
   };
 
+  viewportRef = React.createRef();
+
   ro = new ResizeObserver((elements) => {
     for (let elem of elements) {
       const crx = elem.contentRect;
@@ -18,26 +20,27 @@ class SmoothScroll extends React.Component {
   });
 
   componentDidMount() {
-    console.log(this.state.height);
     window.addEventListener("scroll", this.onScroll);
-    this.ro.observe(this.viewport);
+    this.ro.observe(this.viewportRef.current);
   }
 
   componentWillUnmount() {
-    this.ro.unobserve(this.viewport);
+    this.ro.unobserve(this.viewportRef.current);
   }
 
   onScroll = () => {
-    TweenLite.to(this.viewport, 1, {
-      y: -window.pageYOffset,
-      ease: Power1.easeOut,
-    });
+    if (this.viewportRef.current) {
+      TweenLite.to(this.viewportRef.current, 1, {
+        y: -window.pageYOffset,
+        ease: Power1.easeOut,
+      });
+    }
   };
 
   render() {
     return (
       <>
-        <div className={styles.viewport} ref={(ref) => (this.viewport = ref)}>
+        <div className={styles.viewport} ref={this.viewportRef}>
           {this.props.children}
         </div>
         <div

@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import PropTypes from "prop-types";
 
 import { useGlobalStateContext } from "../../context/global-context/GlobaContext";
 
@@ -46,6 +47,13 @@ const Heading = ({ text }) => {
       </p>
     </div>
   );
+};
+
+Heading.propTypes = {
+  text: PropTypes.shape({
+    title1: PropTypes.string.isRequired,
+    title2: PropTypes.string,
+  }),
 };
 
 export default Heading;

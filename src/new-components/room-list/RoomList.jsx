@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
+import PropTypes from "prop-types";
 
 import RoomCard from "./../room-card/RoomCard";
 
@@ -35,6 +36,10 @@ const RoomsList = ({ rooms }) => {
       )}
     </div>
   );
+};
+
+RoomsList.propTypes = {
+  rooms: PropTypes.arrayOf(PropTypes.object),
 };
 
 export default RoomsList;

@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
+import PropTypes from "prop-types";
 
 import TextCard from "../text-card/TextCard";
 
@@ -86,6 +87,10 @@ const Slider2 = ({ rooms }) => {
       </div>
     </>
   );
+};
+
+Slider2.propTypes = {
+  rooms: PropTypes.arrayOf(PropTypes.object),
 };
 
 export default Slider2;

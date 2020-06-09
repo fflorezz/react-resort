@@ -40,7 +40,6 @@ const Nav = () => {
     if (pathName === "/rooms" || pathName === "/reservas") {
       setExit(false);
     }
-
     if (isPathChange && isNavOpen) {
       dispatch(toggleNav());
     }

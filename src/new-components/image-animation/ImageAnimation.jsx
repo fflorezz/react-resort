@@ -1,4 +1,5 @@
 import React, { useRef, useEffect } from "react";
+import PropTypes from "prop-types";
 
 import { useGlobalStateContext } from "../../context/global-context/GlobaContext";
 
@@ -26,6 +27,12 @@ const ImageAnimation = ({ src, width, alt }) => {
       <img ref={imgRef} src={src} alt={alt ? alt : ""} />
     </div>
   );
+};
+
+ImageAnimation.propTypes = {
+  src: PropTypes.string.isRequired,
+  with: PropTypes.string,
+  alt: PropTypes.string,
 };
 
 export default ImageAnimation;

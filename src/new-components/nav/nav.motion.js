@@ -33,17 +33,7 @@ export const navAnimation = () => {
       },
       "-=0.3"
     )
-    .from(
-      `.${styles.contactItem}`,
-      {
-        opacity: 0,
-        y: "50%",
-        stagger: 0.1,
-        ease: "power3",
-        duration: 1,
-      },
-      "-=0.9"
-    )
+
     .from(
       `.${styles.navImage}`,
       {

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import styles from "./section.module.scss";
 
@@ -17,4 +18,8 @@ const Section = ({ children, id, row }) => {
   );
 };
 
+Section.propTypes = {
+  id: PropTypes.string,
+  row: PropTypes.bool,
+};
 export default Section;

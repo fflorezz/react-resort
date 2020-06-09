@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 import styles from "./roomCard.module.scss";
 import { item } from "./rommcard.motion.js";
@@ -20,6 +21,14 @@ const RoomCard = ({ room }) => {
       </Link>
     </motion.div>
   );
+};
+
+RoomCard.propTypes = {
+  room: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    slug: PropTypes.string.isRequired,
+    images: PropTypes.arrayOf(PropTypes.string),
+  }),
 };
 
 export default RoomCard;

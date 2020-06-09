@@ -1,5 +1,6 @@
 import React from "react";
 import { useHistory, Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 import styles from "./singleRoom.module.scss";
 import ButtonClose from "./../button-close/ButtonClose";
@@ -64,6 +65,19 @@ const SingleRoomPage = ({ room }) => {
       </section>
     </div>
   );
+};
+
+SingleRoomPage.propTypes = {
+  room: PropTypes.shape({
+    images: PropTypes.arrayOf(PropTypes.string),
+    name: PropTypes.string,
+    description: PropTypes.string,
+    price: PropTypes.number,
+    size: PropTypes.number,
+    capacity: PropTypes.number,
+    pets: PropTypes.bool,
+    extras: PropTypes.arrayOf(PropTypes.string),
+  }),
 };
 
 export default SingleRoomPage;

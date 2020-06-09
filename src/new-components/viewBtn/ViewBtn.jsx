@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 import { ReactComponent as Arrow } from "../../images/arrow.svg";
 
@@ -14,4 +15,7 @@ const ViewBtn = ({ slug }) => {
   );
 };
 
+ViewBtn.propTypes = {
+  slug: PropTypes.string,
+};
 export default ViewBtn;

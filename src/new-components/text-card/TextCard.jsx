@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import ViewBtn from "./../viewBtn/ViewBtn";
 import { trimText } from "./../../utils/trimText";
@@ -14,6 +15,13 @@ const TextCard = ({ refCallback, title, description, slug }) => {
       <ViewBtn slug={slug} />
     </div>
   );
+};
+
+TextCard.propTypes = {
+  refCallback: PropTypes.func,
+  title: PropTypes.string,
+  description: PropTypes.string,
+  slug: PropTypes.string,
 };
 
 export default TextCard;
