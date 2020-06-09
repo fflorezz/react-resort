@@ -6,8 +6,8 @@ import Header from "./new-components/header/Header";
 import HomePage from "./pages/home/HomePage";
 import RoomsPage from "./pages/rooms/RoomsPage";
 import SingleRoomPage from "./pages/single-room/SingleRoomPage";
-import ErrorPage from "./pages/ErrorPage";
 import Reservas from "./pages/reservas/Reservas";
+import ErrorPage from "./pages/error/ErrorPage";
 // import Mask from "./new-components/mask/Mask";
 
 import "./App.scss";

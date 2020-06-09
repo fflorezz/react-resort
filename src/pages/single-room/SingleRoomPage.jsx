@@ -5,6 +5,7 @@ import { useRoomsStateContext } from "../../context/roomsContex/RoomsContext";
 import SingleRoom from "./../../new-components/SingleRoom/SingleRoom";
 import ModalAnimation from "./../../new-components/modal-animation/ModalAnimation";
 import Spinner from "./../../new-components/spinner/Spinner";
+import ErrorPage from "./../error/ErrorPage";
 
 const SingleRoomPage = ({ match }) => {
   const { getRoom, fetching } = useRoomsStateContext();
@@ -18,7 +19,7 @@ const SingleRoomPage = ({ match }) => {
       ) : room ? (
         <SingleRoom room={room} />
       ) : (
-        "ROOM NOT FOUND"
+        <ErrorPage />
       )}
     </ModalAnimation>
   );
