@@ -2,9 +2,9 @@ import React from "react";
 
 import { useRoomsStateContext } from "../../context/roomsContex/RoomsContext";
 
-import SingleRoom from "./../../new-components/SingleRoom/SingleRoom";
-import ModalAnimation from "./../../new-components/modal-animation/ModalAnimation";
-import Spinner from "./../../new-components/spinner/Spinner";
+import SingleRoom from "./../../components/SingleRoom/SingleRoom";
+import ModalAnimation from "./../../components/modal-animation/ModalAnimation";
+import Spinner from "./../../components/spinner/Spinner";
 import ErrorPage from "./../error/ErrorPage";
 
 const SingleRoomPage = ({ match }) => {

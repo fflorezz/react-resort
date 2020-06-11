@@ -4,7 +4,7 @@ import logo from "../../images/logo_transparent_white.png";
 
 import styles from "./errorPage.module.scss";
 import { Link } from "react-router-dom";
-import ModalAnimation from "./../../new-components/modal-animation/ModalAnimation";
+import ModalAnimation from "./../../components/modal-animation/ModalAnimation";
 
 const ErrorPage = () => {
   return (

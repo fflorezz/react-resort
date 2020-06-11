@@ -28,7 +28,7 @@ const RoomsList = ({ rooms }) => {
             animate={controls}
             className={styles.roomsListCenter}
           >
-            {rooms.map((room, idx) => (
+            {rooms.map((room) => (
               <RoomCard key={room.id} room={room} />
             ))}
           </motion.div>

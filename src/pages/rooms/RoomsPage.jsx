@@ -1,9 +1,9 @@
 import React from "react";
 import { useHistory, Link } from "react-router-dom";
 
-import ModalAnimation from "./../../new-components/modal-animation/ModalAnimation";
-import RoomsContainer from "./../../new-components/rooms-container/RoomsContainer";
-import ButtonClose from "./../../new-components/button-close/ButtonClose";
+import ModalAnimation from "./../../components/modal-animation/ModalAnimation";
+import RoomsContainer from "./../../components/rooms-container/RoomsContainer";
+import ButtonClose from "./../../components/button-close/ButtonClose";
 
 import styles from "./roomsPage.module.scss";
 

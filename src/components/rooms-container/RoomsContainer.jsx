@@ -2,8 +2,8 @@ import React from "react";
 
 import { useRoomsStateContext } from "../../context/roomsContex/RoomsContext";
 
-import RoomsFilter from "./../../new-components/rooms-filter/RoomsFilter";
-import RoomsList from "../../new-components/room-list/RoomList";
+import RoomsFilter from "./../../components/rooms-filter/RoomsFilter";
+import RoomsList from "../../components/room-list/RoomList";
 import Spinner from "./../spinner/Spinner";
 
 const RoomsContainer = () => {
