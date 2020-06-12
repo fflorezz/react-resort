@@ -35,7 +35,9 @@ const HeaderReservas = () => {
             <div className={styles.info}>
               <div className={styles.field}>
                 <MdLocationOn />
-                <p>Calle 38 No. 29 - 52 Barrio La Soledad, Bogotá Colombia</p>
+                <p>
+                  Calle 38 No. 29 - 52 Barrio La Soledad, Cartegena Colombia
+                </p>
               </div>
             </div>
           </div>

@@ -11,8 +11,9 @@ export const useDraggable = (dragNext, dragPrev) => {
     if (draggableRef.current) {
       Draggable.create(draggableRef.current, {
         type: "x",
-        minimumMovement: 10,
+        minimumMovement: 5,
         dragClickables: false,
+        zIndexBoost: false,
         onDragStart: function () {
           if (this.getDirection() === "left") {
             dragNext();
