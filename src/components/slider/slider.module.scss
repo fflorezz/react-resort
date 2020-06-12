@@ -27,6 +27,10 @@
   svg {
     height: 4vw;
     width: 4vw;
+    @include atSmall {
+      height: 8vw;
+      width: 8vw;
+    }
     path {
       fill: white;
     }
@@ -40,7 +44,7 @@
 .nextArrow {
   left: 20%;
   @include atSmall {
-    left: 30%;
+    left: 25%;
   }
 }
 .sliderNext {
@@ -157,5 +161,21 @@
     width: 100%;
     display: block;
     object-fit: cover;
+  }
+}
+
+.proxy {
+  display: none;
+  opacity: 1;
+  width: 110%;
+  height: 40%;
+  transform: translate(-50%, -50%);
+  //background-color: red;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  z-index: 10;
+  @include atSmall {
+    display: block;
   }
 }

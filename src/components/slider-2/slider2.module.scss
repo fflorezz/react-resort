@@ -5,6 +5,7 @@
   height: 45vw;
   @include atSmall {
     height: 120vw;
+    margin-bottom: 20vw;
   }
 }
 .slider {
@@ -115,5 +116,20 @@
 .nextArrow {
   right: 0;
   @include atSmall {
+  }
+}
+
+.proxy {
+  display: none;
+  opacity: 1;
+  width: 500%;
+  height: 40%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  top: 40%;
+  left: -50%;
+  z-index: 10;
+  @include atSmall {
+    display: inline;
   }
 }

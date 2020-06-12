@@ -16,6 +16,7 @@ const Hero = () => {
           espaciosas y sofisticadas habitaciones.
         </p>
       </div>
+      <div className={styles.scrollDown}></div>
     </div>
   );
 };

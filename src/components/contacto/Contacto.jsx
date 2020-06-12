@@ -46,7 +46,7 @@ const Contacto = () => {
             <br />
             Calle 38 No. 29 - 52 Barrio La Soledad
             <br />
-            Bogotá
+            Cartegena
             <br />
             Colombia
           </p>
